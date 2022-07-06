@@ -7,7 +7,7 @@
     <timestamps>
       <styleCop>2022/06/29 10:08:43.969</styleCop>
       <settingsFile>2022/06/29 10:08:43.941</settingsFile>
-      <sourceFile>2022/07/05 21:20:37.872</sourceFile>
+      <sourceFile>2022/07/06 18:03:50.349</sourceFile>
       <parser>2022/06/29 10:08:43.969</parser>
       <StyleCop.CSharp.DocumentationRules>2022/06/29 10:08:43.969</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>395737098</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -66,14 +66,40 @@
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to calculateMovement must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>23</line>
+        <index>544</index>
+        <endIndex>560</endIndex>
+        <startLine>23</startLine>
+        <startColumn>9</startColumn>
+        <endLine>23</endLine>
+        <endColumn>25</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>26</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
+        <context>The method must have an access modifier.</context>
+        <line>26</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: calculateMovement.</context>
+        <line>26</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _speed must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>24</line>
-        <index>612</index>
-        <endIndex>617</endIndex>
-        <startLine>24</startLine>
-        <startColumn>44</startColumn>
-        <endLine>24</endLine>
-        <endColumn>49</endColumn>
+        <line>34</line>
+        <index>878</index>
+        <endIndex>883</endIndex>
+        <startLine>34</startLine>
+        <startColumn>41</startColumn>
+        <endLine>34</endLine>
+        <endColumn>46</endColumn>
         <warning>False</warning>
       </violation>
     </violations>
