@@ -18,10 +18,13 @@ public class Player : MonoBehaviour
 
     private float _canFire = -1f;
 
+    [SerializeField]
+    private int _lives = 3;
+
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = new Vector3(0, -2, 0);
     }
 
     void Update()
@@ -62,4 +65,17 @@ public class Player : MonoBehaviour
         Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
         Debug.Log("space key was pressed");
     }
+
+    public void Damage()
+    {
+        _lives--;
+
+        // check if dead
+        // destroy us
+        if (_lives < 1)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }
