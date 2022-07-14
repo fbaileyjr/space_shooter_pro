@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 2065288903}
   - component: {fileID: 2065288902}
   - component: {fileID: 2065288901}
+  - component: {fileID: 2065288904}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -447,8 +448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3.5
-  _laserPrefab: {fileID: 2790685185057857234, guid: f2d24d55bb826424eb13e67c877c4e71, type: 3}
-  _laserOffset: 0.8
+  _laserPrefab: {fileID: 6498174199495935895, guid: f2d24d55bb826424eb13e67c877c4e71, type: 3}
+  _laserOffset: 1
   _fireRate: 0.15
   _lives: 3
 --- !u!212 &2065288902
@@ -511,13 +512,39 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065288900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.48, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2065288904
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065288900}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.008327365, y: -0.016655207}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.2379768, y: 4.1540055}
+  m_EdgeRadius: 0
 --- !u!1 &2111245389
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,10 +643,6 @@ PrefabInstance:
     - target: {fileID: 5127330718215305269, guid: bbe2a835cec909942b2b43fe2577c1b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8020573558113828667, guid: bbe2a835cec909942b2b43fe2577c1b3, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9088856013021700491, guid: bbe2a835cec909942b2b43fe2577c1b3, type: 3}
       propertyPath: m_Name
