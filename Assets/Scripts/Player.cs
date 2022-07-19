@@ -85,12 +85,10 @@ public class Player : MonoBehaviour
         if (isTripleShotActive)
         {
             Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
-            Debug.Log("space key was pressed");
         }
         else
         {
             Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
-            Debug.Log("space key was pressed");
         }
         
 
