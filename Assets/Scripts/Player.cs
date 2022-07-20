@@ -32,6 +32,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float powerupCooldown = 5.0f;
 
+    [SerializeField]
+    private float _speedBoostMultiplier = 2.0f;
+
+    [SerializeField]
+    private bool isSpeedBoostActive = false;
+
 
 
     // Start is called before the first frame update
@@ -120,5 +126,19 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         isTripleShotActive = false;
+    }
+
+    public void SpeedBoostActive()
+    {
+        isSpeedBoostActive = true;
+        _speed *= _speedBoostMultiplier;
+        StartCoroutine(SpeedBoostPowerDownRoutine(5.0f));
+    }
+
+    IEnumerator SpeedBoostPowerDownRoutine(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        isSpeedBoostActive = false;
+        _speed /= _speedBoostMultiplier;
     }
 }

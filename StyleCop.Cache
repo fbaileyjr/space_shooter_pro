@@ -144,11 +144,113 @@
       </violation>
     </violations>
   </sourcecode>
-  <sourcecode name="Player.cs" parser="StyleCop.CSharp.CsParser">
+  <sourcecode name="Laser.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2022/06/29 10:08:43.969</styleCop>
       <settingsFile>2022/06/29 10:08:43.941</settingsFile>
-      <sourceFile>2022/07/16 10:00:30.884</sourceFile>
+      <sourceFile>2022/07/18 17:20:45.785</sourceFile>
+      <parser>2022/06/29 10:08:43.969</parser>
+      <StyleCop.CSharp.DocumentationRules>2022/06/29 10:08:43.969</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>395737098</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2022/06/29 10:08:43.969</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2022/06/29 10:08:43.969</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2022/06/29 10:08:43.969</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2022/06/29 10:08:43.969</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2022/06/29 10:08:43.969</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2022/06/29 10:08:43.969</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
+        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
+        <line>1</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The class must have a documentation header.</context>
+        <line>5</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The field must have a documentation header.</context>
+        <line>8</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotBeginWithUnderscore" ruleCheckId="SA1309">
+        <context>Field names must not start with an underscore.</context>
+        <line>8</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>10</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
+        <context>An opening curly bracket must not be followed by a blank line.</context>
+        <line>11</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
+        <context>An opening curly bracket must not be followed by a blank line.</context>
+        <line>16</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
+        <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
+        <line>21</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
+        <context>The method must have an access modifier.</context>
+        <line>10</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to _laserSpeed must begin with the 'this.', 'base.', 'object.' or 'Laser.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>13</line>
+        <index>264</index>
+        <endIndex>274</endIndex>
+        <startLine>13</startLine>
+        <startColumn>43</startColumn>
+        <endLine>13</endLine>
+        <endColumn>53</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to Destroy must begin with the 'this.', 'base.', 'object.' or 'Laser.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>20</line>
+        <index>425</index>
+        <endIndex>431</endIndex>
+        <startLine>20</startLine>
+        <startColumn>17</startColumn>
+        <endLine>20</endLine>
+        <endColumn>23</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to Destroy must begin with the 'this.', 'base.', 'object.' or 'Laser.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>22</line>
+        <index>491</index>
+        <endIndex>497</endIndex>
+        <startLine>22</startLine>
+        <startColumn>13</startColumn>
+        <endLine>22</endLine>
+        <endColumn>19</endColumn>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="PowerUp.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2022/06/29 10:08:43.969</styleCop>
+      <settingsFile>2022/06/29 10:08:43.941</settingsFile>
+      <sourceFile>2022/07/19 11:02:40.269</sourceFile>
       <parser>2022/06/29 10:08:43.969</parser>
       <StyleCop.CSharp.DocumentationRules>2022/06/29 10:08:43.969</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>395737098</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -178,12 +280,146 @@
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
         <context>The code must not contain multiple blank lines in a row.</context>
+        <line>16</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
+        <context>A closing curly bracket must not be preceded by a blank line.</context>
+        <line>57</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The field must have a documentation header.</context>
+        <line>7</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotBeginWithUnderscore" ruleCheckId="SA1309">
+        <context>Field names must not start with an underscore.</context>
+        <line>7</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The field must have a documentation header.</context>
+        <line>14</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>17</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
+        <context>The method must have an access modifier.</context>
+        <line>17</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to _powerupSpeed must begin with the 'this.', 'base.', 'object.' or 'PowerUp.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>19</line>
+        <index>377</index>
+        <endIndex>389</endIndex>
+        <startLine>19</startLine>
+        <startColumn>44</startColumn>
+        <endLine>19</endLine>
+        <endColumn>56</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to Destroy must begin with the 'this.', 'base.', 'object.' or 'PowerUp.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>23</line>
+        <index>479</index>
+        <endIndex>485</endIndex>
+        <startLine>23</startLine>
+        <startColumn>13</startColumn>
+        <endLine>23</endLine>
+        <endColumn>19</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>27</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
+        <context>A closing curly bracket must not be preceded by a blank line.</context>
+        <line>55</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to powerupID must begin with the 'this.', 'base.', 'object.' or 'PowerUp.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
         <line>35</line>
+        <index>778</index>
+        <endIndex>786</endIndex>
+        <startLine>35</startLine>
+        <startColumn>24</startColumn>
+        <endLine>35</endLine>
+        <endColumn>32</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to Destroy must begin with the 'this.', 'base.', 'object.' or 'PowerUp.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>52</line>
+        <index>1315</index>
+        <endIndex>1321</endIndex>
+        <startLine>52</startLine>
+        <startColumn>13</startColumn>
+        <endLine>52</endLine>
+        <endColumn>19</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.SpacingRules" rule="KeywordsMustBeSpacedCorrectly" ruleCheckId="SA1000">
+        <context>The spacing around the keyword 'switch' is invalid.</context>
+        <line>35</line>
+        <index>771</index>
+        <endIndex>776</endIndex>
+        <startLine>35</startLine>
+        <startColumn>17</startColumn>
+        <endLine>35</endLine>
+        <endColumn>22</endColumn>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="Player.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2022/06/29 10:08:43.969</styleCop>
+      <settingsFile>2022/06/29 10:08:43.941</settingsFile>
+      <sourceFile>2022/07/19 13:54:49.666</sourceFile>
+      <parser>2022/06/29 10:08:43.969</parser>
+      <StyleCop.CSharp.DocumentationRules>2022/06/29 10:08:43.969</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>395737098</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2022/06/29 10:08:43.969</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2022/06/29 10:08:43.969</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2022/06/29 10:08:43.969</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2022/06/29 10:08:43.969</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2022/06/29 10:08:43.969</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2022/06/29 10:08:43.969</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
+        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
+        <line>1</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The class must have a documentation header.</context>
+        <line>5</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
         <context>The code must not contain multiple blank lines in a row.</context>
-        <line>36</line>
+        <line>41</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
+        <context>The code must not contain multiple blank lines in a row.</context>
+        <line>42</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
@@ -277,580 +513,474 @@
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The field must have a documentation header.</context>
+        <line>36</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotBeginWithUnderscore" ruleCheckId="SA1309">
+        <context>Field names must not start with an underscore.</context>
+        <line>36</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The field must have a documentation header.</context>
+        <line>39</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The method must have a documentation header.</context>
-        <line>38</line>
+        <line>44</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
         <context>The method must have an access modifier.</context>
-        <line>38</line>
+        <line>44</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustBeOrderedByAccess" ruleCheckId="SA1202">
         <context>All private methods must be placed after all public methods.</context>
-        <line>101</line>
+        <line>105</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustBeOrderedByAccess" ruleCheckId="SA1202">
         <context>All private methods must be placed after all public methods.</context>
-        <line>114</line>
+        <line>118</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustBeOrderedByAccess" ruleCheckId="SA1202">
+        <context>All private methods must be placed after all public methods.</context>
+        <line>131</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _spawnManager must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>41</line>
-        <index>853</index>
-        <endIndex>865</endIndex>
-        <startLine>41</startLine>
+        <line>47</line>
+        <index>996</index>
+        <endIndex>1008</endIndex>
+        <startLine>47</startLine>
         <startColumn>9</startColumn>
-        <endLine>41</endLine>
+        <endLine>47</endLine>
         <endColumn>21</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _spawnManager must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>43</line>
-        <index>947</index>
-        <endIndex>959</endIndex>
-        <startLine>43</startLine>
+        <line>49</line>
+        <index>1090</index>
+        <endIndex>1102</endIndex>
+        <startLine>49</startLine>
         <startColumn>13</startColumn>
-        <endLine>43</endLine>
+        <endLine>49</endLine>
         <endColumn>25</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The method must have a documentation header.</context>
-        <line>49</line>
+        <line>55</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
         <context>The method must have an access modifier.</context>
-        <line>49</line>
+        <line>55</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to calculateMovement must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>51</line>
-        <index>1095</index>
-        <endIndex>1111</endIndex>
-        <startLine>51</startLine>
+        <line>57</line>
+        <index>1238</index>
+        <endIndex>1254</endIndex>
+        <startLine>57</startLine>
         <startColumn>9</startColumn>
-        <endLine>51</endLine>
+        <endLine>57</endLine>
         <endColumn>25</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to FireLaser must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>55</line>
-        <index>1220</index>
-        <endIndex>1228</endIndex>
-        <startLine>55</startLine>
+        <line>61</line>
+        <index>1363</index>
+        <endIndex>1371</endIndex>
+        <startLine>61</startLine>
         <startColumn>13</startColumn>
-        <endLine>55</endLine>
+        <endLine>61</endLine>
         <endColumn>21</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _canFire must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>53</line>
-        <index>1186</index>
-        <endIndex>1193</endIndex>
-        <startLine>53</startLine>
+        <line>59</line>
+        <index>1329</index>
+        <endIndex>1336</endIndex>
+        <startLine>59</startLine>
         <startColumn>60</startColumn>
-        <endLine>53</endLine>
+        <endLine>59</endLine>
         <endColumn>67</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The method must have a documentation header.</context>
-        <line>59</line>
+        <line>65</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
         <context>The method must have an access modifier.</context>
-        <line>59</line>
+        <line>65</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
         <context>method names begin with an upper-case letter: calculateMovement.</context>
-        <line>59</line>
+        <line>65</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _speed must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>67</line>
-        <index>1557</index>
-        <endIndex>1562</endIndex>
-        <startLine>67</startLine>
+        <line>73</line>
+        <index>1700</index>
+        <endIndex>1705</endIndex>
+        <startLine>73</startLine>
         <startColumn>41</startColumn>
-        <endLine>67</endLine>
+        <endLine>73</endLine>
         <endColumn>46</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The method must have a documentation header.</context>
-        <line>81</line>
+        <line>87</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
         <context>The code must not contain multiple blank lines in a row.</context>
-        <line>96</line>
+        <line>100</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
         <context>A closing curly bracket must not be preceded by a blank line.</context>
-        <line>99</line>
+        <line>103</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="SingleLineCommentsMustNotBeFollowedByBlankLine" ruleCheckId="SA1512">
         <context>A single-line comment must not be followed by a blank line. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>97</line>
+        <line>101</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
         <context>The method must have an access modifier.</context>
-        <line>81</line>
+        <line>87</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _canFire must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>83</line>
-        <index>2027</index>
-        <endIndex>2034</endIndex>
-        <startLine>83</startLine>
+        <line>89</line>
+        <index>2170</index>
+        <endIndex>2177</endIndex>
+        <startLine>89</startLine>
         <startColumn>9</startColumn>
-        <endLine>83</endLine>
+        <endLine>89</endLine>
         <endColumn>16</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _fireRate must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>83</line>
-        <index>2050</index>
-        <endIndex>2058</endIndex>
-        <startLine>83</startLine>
+        <line>89</line>
+        <index>2193</index>
+        <endIndex>2201</endIndex>
+        <startLine>89</startLine>
         <startColumn>32</startColumn>
-        <endLine>83</endLine>
+        <endLine>89</endLine>
         <endColumn>40</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to Instantiate must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>87</line>
-        <index>2120</index>
-        <endIndex>2130</endIndex>
-        <startLine>87</startLine>
+        <line>93</line>
+        <index>2263</index>
+        <endIndex>2273</endIndex>
+        <startLine>93</startLine>
         <startColumn>13</startColumn>
-        <endLine>87</endLine>
+        <endLine>93</endLine>
         <endColumn>23</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _tripleShotPrefab must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>87</line>
-        <index>2132</index>
-        <endIndex>2148</endIndex>
-        <startLine>87</startLine>
+        <line>93</line>
+        <index>2275</index>
+        <endIndex>2291</endIndex>
+        <startLine>93</startLine>
         <startColumn>25</startColumn>
-        <endLine>87</endLine>
+        <endLine>93</endLine>
         <endColumn>41</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to isTripleShotActive must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>85</line>
-        <index>2076</index>
-        <endIndex>2093</endIndex>
-        <startLine>85</startLine>
+        <line>91</line>
+        <index>2219</index>
+        <endIndex>2236</endIndex>
+        <startLine>91</startLine>
         <startColumn>13</startColumn>
-        <endLine>85</endLine>
+        <endLine>91</endLine>
         <endColumn>30</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to Instantiate must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>92</line>
-        <index>2291</index>
-        <endIndex>2301</endIndex>
-        <startLine>92</startLine>
+        <line>97</line>
+        <index>2385</index>
+        <endIndex>2395</endIndex>
+        <startLine>97</startLine>
         <startColumn>13</startColumn>
-        <endLine>92</endLine>
+        <endLine>97</endLine>
         <endColumn>23</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _laserPrefab must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>92</line>
-        <index>2303</index>
-        <endIndex>2314</endIndex>
-        <startLine>92</startLine>
+        <line>97</line>
+        <index>2397</index>
+        <endIndex>2408</endIndex>
+        <startLine>97</startLine>
         <startColumn>25</startColumn>
-        <endLine>92</endLine>
+        <endLine>97</endLine>
         <endColumn>36</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _laserOffset must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>92</line>
-        <index>2353</index>
-        <endIndex>2364</endIndex>
-        <startLine>92</startLine>
+        <line>97</line>
+        <index>2447</index>
+        <endIndex>2458</endIndex>
+        <startLine>97</startLine>
         <startColumn>75</startColumn>
-        <endLine>92</endLine>
+        <endLine>97</endLine>
         <endColumn>86</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The method must have a documentation header.</context>
-        <line>101</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to _lives must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>103</line>
-        <index>2578</index>
-        <endIndex>2583</endIndex>
-        <startLine>103</startLine>
-        <startColumn>9</startColumn>
-        <endLine>103</endLine>
-        <endColumn>14</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to _spawnManager must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>109</line>
-        <index>2688</index>
-        <endIndex>2700</endIndex>
-        <startLine>109</startLine>
-        <startColumn>13</startColumn>
-        <endLine>109</endLine>
-        <endColumn>25</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to Destroy must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>110</line>
-        <index>2732</index>
-        <endIndex>2738</endIndex>
-        <startLine>110</startLine>
-        <startColumn>13</startColumn>
-        <endLine>110</endLine>
-        <endColumn>19</endColumn>
+        <line>105</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _lives must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
         <line>107</line>
-        <index>2652</index>
-        <endIndex>2657</endIndex>
+        <index>2623</index>
+        <endIndex>2628</endIndex>
         <startLine>107</startLine>
-        <startColumn>13</startColumn>
+        <startColumn>9</startColumn>
         <endLine>107</endLine>
+        <endColumn>14</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to _spawnManager must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>113</line>
+        <index>2733</index>
+        <endIndex>2745</endIndex>
+        <startLine>113</startLine>
+        <startColumn>13</startColumn>
+        <endLine>113</endLine>
+        <endColumn>25</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to Destroy must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>114</line>
+        <index>2777</index>
+        <endIndex>2783</endIndex>
+        <startLine>114</startLine>
+        <startColumn>13</startColumn>
+        <endLine>114</endLine>
+        <endColumn>19</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to _lives must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>111</line>
+        <index>2697</index>
+        <endIndex>2702</endIndex>
+        <startLine>111</startLine>
+        <startColumn>13</startColumn>
+        <endLine>111</endLine>
         <endColumn>18</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The method must have a documentation header.</context>
-        <line>114</line>
+        <line>118</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="SingleLineCommentMustBePrecededByBlankLine" ruleCheckId="SA1515">
         <context>A single-line comment must be preceded by a blank line or another single-line comment, or must be the first item in its scope. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>118</line>
+        <line>122</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to isTripleShotActive must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>116</line>
-        <index>2830</index>
-        <endIndex>2847</endIndex>
-        <startLine>116</startLine>
+        <line>120</line>
+        <index>2875</index>
+        <endIndex>2892</endIndex>
+        <startLine>120</startLine>
         <startColumn>9</startColumn>
-        <endLine>116</endLine>
+        <endLine>120</endLine>
         <endColumn>26</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to StartCoroutine must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>117</line>
-        <index>2866</index>
-        <endIndex>2879</endIndex>
-        <startLine>117</startLine>
+        <line>121</line>
+        <index>2911</index>
+        <endIndex>2924</endIndex>
+        <startLine>121</startLine>
         <startColumn>9</startColumn>
-        <endLine>117</endLine>
+        <endLine>121</endLine>
         <endColumn>22</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to TripleShotPowerDownRoutine must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>117</line>
-        <index>2881</index>
-        <endIndex>2906</endIndex>
-        <startLine>117</startLine>
+        <line>121</line>
+        <index>2926</index>
+        <endIndex>2951</endIndex>
+        <startLine>121</startLine>
         <startColumn>24</startColumn>
-        <endLine>117</endLine>
+        <endLine>121</endLine>
         <endColumn>49</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to powerupCooldown must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>117</line>
-        <index>2908</index>
-        <endIndex>2922</endIndex>
-        <startLine>117</startLine>
+        <line>121</line>
+        <index>2953</index>
+        <endIndex>2967</endIndex>
+        <startLine>121</startLine>
         <startColumn>51</startColumn>
-        <endLine>117</endLine>
+        <endLine>121</endLine>
         <endColumn>65</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The method must have a documentation header.</context>
-        <line>121</line>
+        <line>125</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
         <context>The method must have an access modifier.</context>
-        <line>121</line>
+        <line>125</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to isTripleShotActive must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>124</line>
-        <index>3103</index>
-        <endIndex>3120</endIndex>
-        <startLine>124</startLine>
+        <line>128</line>
+        <index>3148</index>
+        <endIndex>3165</endIndex>
+        <startLine>128</startLine>
         <startColumn>9</startColumn>
-        <endLine>124</endLine>
+        <endLine>128</endLine>
         <endColumn>26</endColumn>
         <warning>False</warning>
       </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="PowerUp.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2022/06/29 10:08:43.969</styleCop>
-      <settingsFile>2022/06/29 10:08:43.941</settingsFile>
-      <sourceFile>2022/07/16 10:00:31.501</sourceFile>
-      <parser>2022/06/29 10:08:43.969</parser>
-      <StyleCop.CSharp.DocumentationRules>2022/06/29 10:08:43.969</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>395737098</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2022/06/29 10:08:43.969</StyleCop.CSharp.LayoutRules>
-      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2022/06/29 10:08:43.969</StyleCop.CSharp.MaintainabilityRules>
-      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2022/06/29 10:08:43.969</StyleCop.CSharp.NamingRules>
-      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2022/06/29 10:08:43.969</StyleCop.CSharp.OrderingRules>
-      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2022/06/29 10:08:43.969</StyleCop.CSharp.ReadabilityRules>
-      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2022/06/29 10:08:43.969</StyleCop.CSharp.SpacingRules>
-      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
-    </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The class must have a documentation header.</context>
-        <line>5</line>
+        <context>The method must have a documentation header.</context>
+        <line>131</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
-        <context>A closing curly bracket must not be preceded by a blank line.</context>
-        <line>42</line>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to isSpeedBoostActive must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>133</line>
+        <index>3237</index>
+        <endIndex>3254</endIndex>
+        <startLine>133</startLine>
+        <startColumn>9</startColumn>
+        <endLine>133</endLine>
+        <endColumn>26</endColumn>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The field must have a documentation header.</context>
-        <line>7</line>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to _speed must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>134</line>
+        <index>3273</index>
+        <endIndex>3278</endIndex>
+        <startLine>134</startLine>
+        <startColumn>9</startColumn>
+        <endLine>134</endLine>
+        <endColumn>14</endColumn>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotBeginWithUnderscore" ruleCheckId="SA1309">
-        <context>Field names must not start with an underscore.</context>
-        <line>7</line>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to _speedBoostMultiplier must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>134</line>
+        <index>3283</index>
+        <endIndex>3303</endIndex>
+        <startLine>134</startLine>
+        <startColumn>19</startColumn>
+        <endLine>134</endLine>
+        <endColumn>39</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to StartCoroutine must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>135</line>
+        <index>3315</index>
+        <endIndex>3328</endIndex>
+        <startLine>135</startLine>
+        <startColumn>9</startColumn>
+        <endLine>135</endLine>
+        <endColumn>22</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to SpeedBoostPowerDownRoutine must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>135</line>
+        <index>3330</index>
+        <endIndex>3355</endIndex>
+        <startLine>135</startLine>
+        <startColumn>24</startColumn>
+        <endLine>135</endLine>
+        <endColumn>49</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The method must have a documentation header.</context>
-        <line>10</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
-        <context>An opening curly bracket must not be followed by a blank line.</context>
-        <line>11</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
-        <context>A closing curly bracket must not be preceded by a blank line.</context>
-        <line>13</line>
+        <line>138</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
         <context>The method must have an access modifier.</context>
-        <line>10</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>16</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
-        <context>The method must have an access modifier.</context>
-        <line>16</line>
+        <line>138</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to _powerupSpeed must begin with the 'this.', 'base.', 'object.' or 'PowerUp.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>18</line>
-        <index>375</index>
-        <endIndex>387</endIndex>
-        <startLine>18</startLine>
-        <startColumn>44</startColumn>
-        <endLine>18</endLine>
-        <endColumn>56</endColumn>
+        <context>The call to isSpeedBoostActive must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>141</line>
+        <index>3502</index>
+        <endIndex>3519</endIndex>
+        <startLine>141</startLine>
+        <startColumn>9</startColumn>
+        <endLine>141</endLine>
+        <endColumn>26</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to Destroy must begin with the 'this.', 'base.', 'object.' or 'PowerUp.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>22</line>
-        <index>477</index>
-        <endIndex>483</endIndex>
-        <startLine>22</startLine>
-        <startColumn>13</startColumn>
-        <endLine>22</endLine>
-        <endColumn>19</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>26</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
-        <context>An opening curly bracket must not be followed by a blank line.</context>
-        <line>27</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
-        <context>A closing curly bracket must not be preceded by a blank line.</context>
-        <line>40</line>
+        <context>The call to _speed must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>142</line>
+        <index>3539</index>
+        <endIndex>3544</endIndex>
+        <startLine>142</startLine>
+        <startColumn>9</startColumn>
+        <endLine>142</endLine>
+        <endColumn>14</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to Destroy must begin with the 'this.', 'base.', 'object.' or 'PowerUp.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>36</line>
-        <index>812</index>
-        <endIndex>818</endIndex>
-        <startLine>36</startLine>
-        <startColumn>17</startColumn>
-        <endLine>36</endLine>
-        <endColumn>23</endColumn>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="Laser.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2022/06/29 10:08:43.969</styleCop>
-      <settingsFile>2022/06/29 10:08:43.941</settingsFile>
-      <sourceFile>2022/07/18 10:03:21.393</sourceFile>
-      <parser>2022/06/29 10:08:43.969</parser>
-      <StyleCop.CSharp.DocumentationRules>2022/06/29 10:08:43.969</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>395737098</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2022/06/29 10:08:43.969</StyleCop.CSharp.LayoutRules>
-      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2022/06/29 10:08:43.969</StyleCop.CSharp.MaintainabilityRules>
-      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2022/06/29 10:08:43.969</StyleCop.CSharp.NamingRules>
-      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2022/06/29 10:08:43.969</StyleCop.CSharp.OrderingRules>
-      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2022/06/29 10:08:43.969</StyleCop.CSharp.ReadabilityRules>
-      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2022/06/29 10:08:43.969</StyleCop.CSharp.SpacingRules>
-      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
-    </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The class must have a documentation header.</context>
-        <line>5</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The field must have a documentation header.</context>
-        <line>8</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotBeginWithUnderscore" ruleCheckId="SA1309">
-        <context>Field names must not start with an underscore.</context>
-        <line>8</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>10</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
-        <context>An opening curly bracket must not be followed by a blank line.</context>
-        <line>11</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="SingleLineCommentsMustNotBeFollowedByBlankLine" ruleCheckId="SA1512">
-        <context>A single-line comment must not be followed by a blank line. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>18</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
-        <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
-        <line>23</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
-        <context>The method must have an access modifier.</context>
-        <line>10</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to _laserSpeed must begin with the 'this.', 'base.', 'object.' or 'Laser.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>13</line>
-        <index>264</index>
-        <endIndex>274</endIndex>
-        <startLine>13</startLine>
-        <startColumn>43</startColumn>
-        <endLine>13</endLine>
-        <endColumn>53</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to Destroy must begin with the 'this.', 'base.', 'object.' or 'Laser.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>22</line>
-        <index>514</index>
-        <endIndex>520</endIndex>
-        <startLine>22</startLine>
-        <startColumn>17</startColumn>
-        <endLine>22</endLine>
-        <endColumn>23</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to Destroy must begin with the 'this.', 'base.', 'object.' or 'Laser.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>24</line>
-        <index>580</index>
-        <endIndex>586</endIndex>
-        <startLine>24</startLine>
-        <startColumn>13</startColumn>
-        <endLine>24</endLine>
-        <endColumn>19</endColumn>
+        <context>The call to _speedBoostMultiplier must begin with the 'this.', 'base.', 'object.' or 'Player.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>142</line>
+        <index>3549</index>
+        <endIndex>3569</endIndex>
+        <startLine>142</startLine>
+        <startColumn>19</startColumn>
+        <endLine>142</endLine>
+        <endColumn>39</endColumn>
         <warning>False</warning>
       </violation>
     </violations>
@@ -862,7 +992,7 @@
     <timestamps>
       <styleCop>2022/06/29 10:08:43.969</styleCop>
       <settingsFile>2022/06/29 10:08:43.941</settingsFile>
-      <sourceFile>2022/07/18 17:07:44.950</sourceFile>
+      <sourceFile>2022/07/19 16:28:58.773</sourceFile>
       <parser>2022/06/29 10:08:43.969</parser>
       <StyleCop.CSharp.DocumentationRules>2022/06/29 10:08:43.969</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>395737098</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -890,11 +1020,6 @@
         <line>5</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="SingleLineCommentsMustNotBeFollowedByBlankLine" ruleCheckId="SA1512">
-        <context>A single-line comment must not be followed by a blank line. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>39</line>
-        <warning>False</warning>
-      </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The field must have a documentation header.</context>
         <line>8</line>
@@ -940,9 +1065,15 @@
         <line>19</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotBeginWithUnderscore" ruleCheckId="SA1309">
-        <context>Field names must not start with an underscore.</context>
+      <violation namespace="StyleCop.CSharp.SpacingRules" rule="OpeningSquareBracketsMustBeSpacedCorrectly" ruleCheckId="SA1010">
+        <context>Invalid spacing around the opening square bracket.</context>
         <line>19</line>
+        <index>412</index>
+        <endIndex>412</endIndex>
+        <startLine>19</startLine>
+        <startColumn>24</startColumn>
+        <endLine>19</endLine>
+        <endColumn>24</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
@@ -967,14 +1098,14 @@
       </violation>
       <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustBeOrderedByAccess" ruleCheckId="SA1202">
         <context>All private methods must be placed after all public methods.</context>
-        <line>63</line>
+        <line>60</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to StartCoroutine must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
         <line>27</line>
-        <index>585</index>
-        <endIndex>598</endIndex>
+        <index>582</index>
+        <endIndex>595</endIndex>
         <startLine>27</startLine>
         <startColumn>9</startColumn>
         <endLine>27</endLine>
@@ -984,8 +1115,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to SpawnEnemyRoutine must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
         <line>27</line>
-        <index>600</index>
-        <endIndex>616</endIndex>
+        <index>597</index>
+        <endIndex>613</endIndex>
         <startLine>27</startLine>
         <startColumn>24</startColumn>
         <endLine>27</endLine>
@@ -995,8 +1126,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _enemySpawnTime must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
         <line>27</line>
-        <index>618</index>
-        <endIndex>632</endIndex>
+        <index>615</index>
+        <endIndex>629</endIndex>
         <startLine>27</startLine>
         <startColumn>42</startColumn>
         <endLine>27</endLine>
@@ -1006,8 +1137,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to StartCoroutine must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
         <line>28</line>
-        <index>646</index>
-        <endIndex>659</endIndex>
+        <index>643</index>
+        <endIndex>656</endIndex>
         <startLine>28</startLine>
         <startColumn>9</startColumn>
         <endLine>28</endLine>
@@ -1017,8 +1148,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to SpawnPowerupRoutine must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
         <line>28</line>
-        <index>661</index>
-        <endIndex>679</endIndex>
+        <index>658</index>
+        <endIndex>676</endIndex>
         <startLine>28</startLine>
         <startColumn>24</startColumn>
         <endLine>28</endLine>
@@ -1047,103 +1178,103 @@
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The method must have a documentation header.</context>
-        <line>41</line>
+        <line>37</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
         <context>The method must have an access modifier.</context>
-        <line>41</line>
+        <line>37</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _enemyPrefab must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>46</line>
-        <index>1102</index>
-        <endIndex>1113</endIndex>
-        <startLine>46</startLine>
+        <line>42</line>
+        <index>988</index>
+        <endIndex>999</endIndex>
+        <startLine>42</startLine>
         <startColumn>47</startColumn>
-        <endLine>46</endLine>
+        <endLine>42</endLine>
         <endColumn>58</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _enemyContainer must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>47</line>
-        <index>1228</index>
-        <endIndex>1242</endIndex>
-        <startLine>47</startLine>
+        <line>43</line>
+        <index>1114</index>
+        <endIndex>1128</endIndex>
+        <startLine>43</startLine>
         <startColumn>41</startColumn>
-        <endLine>47</endLine>
+        <endLine>43</endLine>
         <endColumn>55</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _stopSpawning must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>43</line>
-        <index>964</index>
-        <endIndex>976</endIndex>
-        <startLine>43</startLine>
+        <line>39</line>
+        <index>850</index>
+        <endIndex>862</endIndex>
+        <startLine>39</startLine>
         <startColumn>16</startColumn>
-        <endLine>43</endLine>
+        <endLine>39</endLine>
         <endColumn>28</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The method must have a documentation header.</context>
-        <line>52</line>
+        <line>48</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
         <context>The method must have an access modifier.</context>
-        <line>52</line>
+        <line>48</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to _powerupPrefab must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>57</line>
-        <index>1533</index>
-        <endIndex>1546</endIndex>
-        <startLine>57</startLine>
+        <context>The call to powerups must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
+        <line>54</line>
+        <index>1472</index>
+        <endIndex>1479</endIndex>
+        <startLine>54</startLine>
         <startColumn>49</startColumn>
-        <endLine>57</endLine>
-        <endColumn>62</endColumn>
+        <endLine>54</endLine>
+        <endColumn>56</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _powerupContainer must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>58</line>
-        <index>1663</index>
-        <endIndex>1679</endIndex>
-        <startLine>58</startLine>
+        <line>55</line>
+        <index>1611</index>
+        <endIndex>1627</endIndex>
+        <startLine>55</startLine>
         <startColumn>43</startColumn>
-        <endLine>58</endLine>
+        <endLine>55</endLine>
         <endColumn>59</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _stopSpawning must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>54</line>
-        <index>1393</index>
-        <endIndex>1405</endIndex>
-        <startLine>54</startLine>
+        <line>50</line>
+        <index>1279</index>
+        <endIndex>1291</endIndex>
+        <startLine>50</startLine>
         <startColumn>16</startColumn>
-        <endLine>54</endLine>
+        <endLine>50</endLine>
         <endColumn>28</endColumn>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
         <context>The method must have a documentation header.</context>
-        <line>63</line>
+        <line>60</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to _stopSpawning must begin with the 'this.', 'base.', 'object.' or 'SpawnManager.' or 'MonoBehaviour.' prefix to indicate the intended method call. </context>
-        <line>65</line>
-        <index>1833</index>
-        <endIndex>1845</endIndex>
-        <startLine>65</startLine>
+        <line>62</line>
+        <index>1781</index>
+        <endIndex>1793</endIndex>
+        <startLine>62</startLine>
         <startColumn>9</startColumn>
-        <endLine>65</endLine>
+        <endLine>62</endLine>
         <endColumn>21</endColumn>
         <warning>False</warning>
       </violation>
