@@ -104,6 +104,11 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
+        // if shields is active
+        // do nothing ...
+        // deactive shields
+        // return; 
+
         _lives--;
 
         // check if dead
