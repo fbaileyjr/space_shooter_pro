@@ -44,6 +44,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _shield;
 
+    [SerializeField]
+    private int _score;
+
 
     // Start is called before the first frame update
     void Start()
@@ -103,14 +106,12 @@ public class Player : MonoBehaviour
             Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
         }
         
-
-        // if is tripleshot, then fire triple shot
         
     }
 
     public void Damage()
     {
-        // if shields is active
+        // if shields is active 
         // do nothing ...
         // deactive shields
         // return; 
@@ -165,4 +166,7 @@ public class Player : MonoBehaviour
         _isShieldActive = true;
         _shield.SetActive(true);
     }
+
+    // method to add 10 to the score
+    // communicate to the UIManager to update the score
 }
