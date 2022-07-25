@@ -9,7 +9,7 @@ public class PowerUp : MonoBehaviour
     // ID for Powerups
     // 0 = Triple Shot
     // 1 = Speed
-    // 3 = Shields
+    // 2 = Shields
     [SerializeField]
     private int powerupID;
 
@@ -41,7 +41,7 @@ public class PowerUp : MonoBehaviour
                         player.SpeedBoostActive();
                         break;
                     case 2:
-                        Debug.Log("Collected Shield");
+                        player.ShieldActive();
                         break;
                     default:
                         Debug.Log("Default value");
