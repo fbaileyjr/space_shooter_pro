@@ -49,6 +49,8 @@ public class Player : MonoBehaviour
 
     private UIManager _uiManager;
 
+    private bool _isGameOver = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -129,6 +131,7 @@ public class Player : MonoBehaviour
         }
 
         _lives--;
+        _uiManager.UpdateLives(_lives);
 
         // check if dead
         // destroy us
@@ -136,6 +139,7 @@ public class Player : MonoBehaviour
         {
             _spawnManager.OnPlayerDeath();
             Destroy(this.gameObject);
+            _isGameOver = true;
         }
     }
 
