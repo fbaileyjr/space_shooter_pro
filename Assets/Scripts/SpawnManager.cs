@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
     private GameObject _powerupContainer;
 
     // Start is called before the first frame update
-    void Start()
+    public void StartSpawning()
     {
         StartCoroutine(SpawnEnemyRoutine(_enemySpawnTime));
         StartCoroutine(SpawnPowerupRoutine());

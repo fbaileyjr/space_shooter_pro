@@ -1278,6 +1278,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1181119388621071787, guid: 8e600f12047f839479d85b373191695f, type: 3}
+      propertyPath: _asteroidExplosion
+      value: 
+      objectReference: {fileID: 8776136649324012608, guid: 1f6bd99e6db41004eb5b0a2bfb63caec, type: 3}
+    - target: {fileID: 1775670527854296026, guid: 8e600f12047f839479d85b373191695f, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775670527854296026, guid: 8e600f12047f839479d85b373191695f, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4054203540103157601, guid: 8e600f12047f839479d85b373191695f, type: 3}
       propertyPath: m_Name
       value: Asteroid
