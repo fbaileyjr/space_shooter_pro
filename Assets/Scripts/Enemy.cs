@@ -78,6 +78,8 @@ public class Enemy : MonoBehaviour
         {
             _enemyAnim.SetTrigger("OnEnemyDeath");
             _enemySpeed = 0;
+            Collider2D this_collider = gameObject.GetComponent<Collider2D>();
+            this_collider.isTrigger = false;
             Destroy(this.gameObject, 2.8f);
         }
 

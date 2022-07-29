@@ -51,6 +51,8 @@ public class Player : MonoBehaviour
 
     private bool _isGameOver = false;
 
+    [SerializeField]
+    private GameObject _left_Engine, _right_Engine;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +69,16 @@ public class Player : MonoBehaviour
         if (_uiManager == null)
         {
             Debug.LogError("The UIManager is NULL.");
+        }
+
+        if (_right_Engine == null)
+        {
+            Debug.Log("Unable to find _right_Engine");
+        }
+
+        if (_left_Engine == null)
+        {
+            Debug.Log("Unable to find _left_Engine");
         }
     }
 
@@ -133,8 +145,18 @@ public class Player : MonoBehaviour
         _lives--;
         _uiManager.UpdateLives(_lives);
 
-        // check if dead
-        // destroy us
+        switch (_lives)
+        {
+            // show engine failure depending on lives
+            case 2:
+                _right_Engine.SetActive(true);
+                break;
+            case 1:
+                _left_Engine.SetActive(true);
+                break;
+
+        }
+
         if (_lives < 1) 
         {
             _spawnManager.OnPlayerDeath();
