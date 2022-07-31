@@ -54,12 +54,20 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _left_Engine, _right_Engine;
 
+    [SerializeField]
+    private AudioClip _laserSoundClip;
+
+
+    [SerializeField]
+    private AudioSource _audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         transform.position = new Vector3(0, -2, 0);
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _audioSource = GetComponent<AudioSource>();
 
         if (_spawnManager == null)
         {
@@ -79,6 +87,15 @@ public class Player : MonoBehaviour
         if (_left_Engine == null)
         {
             Debug.Log("Unable to find _left_Engine");
+        }
+
+        if (_audioSource == null)
+        {
+            Debug.LogError("Audisource on the player is null");
+        }
+        else
+        {
+            _audioSource.clip = _laserSoundClip;
         }
     }
 
@@ -127,8 +144,10 @@ public class Player : MonoBehaviour
         {
             Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
         }
-        
-        
+
+        // play the laser audio clip
+        playLaserClip();
+
     }
 
     public void Damage()
@@ -169,7 +188,6 @@ public class Player : MonoBehaviour
     {
         _isTripleShotActive = true;
         StartCoroutine(TripleShotPowerDownRoutine(powerupCooldown));
-        // start power down coroutine
     }
 
     IEnumerator TripleShotPowerDownRoutine(float waitTime)
@@ -203,6 +221,11 @@ public class Player : MonoBehaviour
         _score += points;
         _uiManager.UpdateScore(_score);
 
+    }
+
+    void playLaserClip() // method to play an audio clip
+    {
+        _audioSource.PlayOneShot(_laserSoundClip);
     }
 
 }

@@ -13,6 +13,9 @@ public class PowerUp : MonoBehaviour
     [SerializeField]
     private int powerupID;
 
+    [SerializeField]
+    private AudioClip _clip;
+
 
     void Update()
     {
@@ -22,6 +25,12 @@ public class PowerUp : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        if (_clip == null)
+        {
+            Debug.LogError("_clip on powerup is set to null");
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -29,6 +38,8 @@ public class PowerUp : MonoBehaviour
         if (other.tag == "Player")
         {
             Player player = other.transform.GetComponent<Player>();
+
+            AudioSource.PlayClipAtPoint(_clip, transform.position, 1.0f);
 
             if (player != null)
             {
