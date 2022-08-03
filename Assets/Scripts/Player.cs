@@ -61,6 +61,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private AudioSource _audioSource;
 
+    [SerializeField]
+    private float _thrustMultiplier = 1.5f;
+
+    private bool isThrusterActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -121,6 +126,8 @@ public class Player : MonoBehaviour
         transform.Translate(direction * _speed * Time.deltaTime);
 
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.8f, 0));
+
+        thrusterBoost();
 
         if (transform.position.x > 11)
         {
@@ -228,4 +235,17 @@ public class Player : MonoBehaviour
         _audioSource.PlayOneShot(_laserSoundClip);
     }
 
+    void thrusterBoost()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _speed *= _thrustMultiplier;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            _speed /= _thrustMultiplier;
+        }
+    }
+    
 }
