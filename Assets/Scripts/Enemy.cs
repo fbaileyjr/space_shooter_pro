@@ -9,14 +9,24 @@ public class Enemy : MonoBehaviour
 
     private Player _player;
 
-    // handle to animator component
-
     private Animator _enemyAnim;
 
     private AudioSource _explosionAudioSource;
 
+    private bool _isDestroyed = false;
+
     [SerializeField]
     private AudioClip _explosionClip;
+
+    [SerializeField]
+    private GameObject _enemyLaserPrefab;
+
+    [SerializeField]
+    private float _enemyLaserOffset = 1.15f;
+    // declare _enemylaser
+    // assign _enemylaser in inspector
+    // create an IEnumerator to shoot lasers at random intervals between 3-7 seconds
+    // start coroutine in Start()
 
 
     // Start is called before the first frame update
@@ -41,6 +51,8 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogError("_explosionAudioSource on Enemy is null");
         }
+
+        StartCoroutine(SpawnEnemyLaserRoutine());
     }
 
     // Update is called once per frame
@@ -84,20 +96,34 @@ public class Enemy : MonoBehaviour
 
             EnemyDeath();
         }
+    }
 
-        void EnemyDeath()
-        {
-            _enemyAnim.SetTrigger("OnEnemyDeath");
-            _enemySpeed = 0;
-            Collider2D this_collider = gameObject.GetComponent<Collider2D>();
-            EnemyExplosion();
-            Destroy(this.gameObject, 2.8f);
-        }
+    void EnemyDeath()
+    {
+        _isDestroyed = true;
+        _enemyAnim.SetTrigger("OnEnemyDeath");
+        _enemySpeed = 0;
+        Collider2D this_collider = gameObject.GetComponent<Collider2D>();
+        EnemyExplosion();
+        Destroy(GetComponent<Collider2D>());
+        Destroy(this.gameObject, 2.8f);
+    }
 
-        void EnemyExplosion()
+    void EnemyExplosion()
+    {
+        _explosionAudioSource.Play();
+    }
+
+    IEnumerator SpawnEnemyLaserRoutine()
+    {
+        while (_isDestroyed == false)
         {
-            _explosionAudioSource.Play();
+            float randomX = Random.Range(-8.0f, 8.0f);
+            GameObject newPowerup = Instantiate(_enemyLaserPrefab, transform.position + new Vector3(0, _enemyLaserOffset, 0), Quaternion.identity);
+            // newPowerup.transform.parent = this.gameObject.transform;
+            yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
         }
 
     }
+
 }

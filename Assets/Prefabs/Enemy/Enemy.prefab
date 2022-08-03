@@ -50,6 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemySpeed: 4
+  _explosionClip: {fileID: 0}
+  _enemyLaserPrefab: {fileID: 1057276793847104516, guid: d1fea456d78438742b3e66f93c59aed4, type: 3}
+  _enemyLaserOffset: 0
 --- !u!212 &1478443665578822520
 SpriteRenderer:
   m_ObjectHideFlags: 0
