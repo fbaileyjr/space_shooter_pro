@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
         {
             RestartLevel();
         }
+        if (Input.GetKeyDown(KeyCode.Escape) && _isGameOver)
+        {
+            Application.Quit();
+        }
 
     }
 
