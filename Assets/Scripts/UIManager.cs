@@ -10,6 +10,11 @@ public class UIManager : MonoBehaviour
     private Text _scoreText;
 
     [SerializeField]
+    private Text _ammoCountText;
+
+    private int _ammoCount = 15;
+
+    [SerializeField]
     private Image _LivesImg;
 
     [SerializeField]
@@ -23,11 +28,15 @@ public class UIManager : MonoBehaviour
 
     private GameManager _gameManager;
 
+    private Player _player;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        _player = GameObject.Find("Player").GetComponent<Player>();
         _scoreText.text = "Score: " + 0;
+        _ammoCountText.text = "Ammo Count: " + 15;
 
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -42,6 +51,22 @@ public class UIManager : MonoBehaviour
     {
         _scoreText.text = "Score: " + playerScore.ToString();
     }
+
+    public void UpdateAmmo()
+    {
+        if (_ammoCount > 0)
+        {
+            _ammoCount -= 1;
+            _ammoCountText.text = "Ammo Count: " + _ammoCount.ToString();
+        }
+        else
+        {
+            _player.isAmmoEmpty();
+        }
+    }
+    // declare Ammo count text
+    // function to update Ammo text
+
 
     public void UpdateLives(int currentLives)
     {
@@ -73,5 +98,6 @@ public class UIManager : MonoBehaviour
             _gameOverText.gameObject.SetActive(true);
         }
     }
+
 
 }

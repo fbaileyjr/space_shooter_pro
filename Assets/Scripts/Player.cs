@@ -11,10 +11,16 @@ public class Player : MonoBehaviour
     private GameObject _laserPrefab;
 
     [SerializeField]
+    private GameObject _OutOfAmmoParticle;
+
+    [SerializeField]
     private GameObject _tripleShotPrefab;
 
     [SerializeField]
     private float _laserOffset = 1.15f;
+
+    [SerializeField]
+    private float _particleExplosionOffset = 2.0f;
 
     [SerializeField]
     private float _fireRate = 0.150f;
@@ -67,6 +73,8 @@ public class Player : MonoBehaviour
     private bool isThrusterActive = false;
 
     private ShieldHealth _shieldHealth;
+
+    private bool _outOfAmmo = false;
 
     
 
@@ -154,17 +162,25 @@ public class Player : MonoBehaviour
     {
         _canFire = Time.time + _fireRate;
 
-        if (_isTripleShotActive)
+        if (_outOfAmmo == false)
         {
-            Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
-        }
-        else
-        {
-            Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
+            if (_isTripleShotActive)
+            {
+                Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
+            }
+
+            _uiManager.UpdateAmmo();
+            playLaserClip();
         }
 
-        // play the laser audio clip
-        playLaserClip();
+        if (_outOfAmmo)
+        {
+            Instantiate(_OutOfAmmoParticle, transform.position + new Vector3(0, _particleExplosionOffset, 0), Quaternion.identity);
+        }
 
     }
 
@@ -264,11 +280,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    // need a function here
-    // to grab the shield. public method
-    // to change color
-    // return bool
-
+    public void isAmmoEmpty()
+    {
+        _outOfAmmo = true;
+    }
 
     
 }
