@@ -66,6 +66,11 @@ public class Player : MonoBehaviour
 
     private bool isThrusterActive = false;
 
+    private ShieldHealth _shieldHealth;
+
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +78,7 @@ public class Player : MonoBehaviour
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _audioSource = GetComponent<AudioSource>();
+        _shieldHealth = _shield.GetComponent<ShieldHealth>();
 
         if (_spawnManager == null)
         {
@@ -101,6 +107,11 @@ public class Player : MonoBehaviour
         else
         {
             _audioSource.clip = _laserSoundClip;
+        }
+
+        if (_shieldHealth == null)
+        {
+            Debug.LogError("ShieldHealth on player is null");
         }
     }
 
@@ -162,9 +173,11 @@ public class Player : MonoBehaviour
 
         if (_isShieldActive)
         {
-            _isShieldActive = false;
-            _shield.SetActive(false);
+            _isShieldActive = _shieldHealth.shieldDamage();
+            _shield.SetActive(_isShieldActive);
+
             // isdisable the visualizer
+            // void function to assign _isShieldActive bool
             return;
         }
 
@@ -219,8 +232,11 @@ public class Player : MonoBehaviour
 
     public void ShieldActive()
     {
+
         _isShieldActive = true;
+        _shieldHealth.newShield();
         _shield.SetActive(true);
+
     }
 
     public void AddScore(int points)
@@ -247,5 +263,12 @@ public class Player : MonoBehaviour
             _speed /= _thrustMultiplier;
         }
     }
+
+    // need a function here
+    // to grab the shield. public method
+    // to change color
+    // return bool
+
+
     
 }
