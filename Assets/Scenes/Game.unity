@@ -2055,6 +2055,7 @@ MonoBehaviour:
   - {fileID: 3953008785520202606, guid: 0fb31832a1ec8734386612bf2113d069, type: 3}
   - {fileID: 7917078422470951776, guid: 43b379b2fa3638044961e2df5e6179c2, type: 3}
   - {fileID: 533129273676511695, guid: d4a12b406fce1f3499630bb73f9f6354, type: 3}
+  - {fileID: 4986082915012745953, guid: 15766381797078440a2e3a9fdd2f6156, type: 3}
   _powerupContainer: {fileID: 933439232}
 --- !u!4 &2111245391
 Transform:

@@ -76,7 +76,11 @@ public class Player : MonoBehaviour
 
     private bool _outOfAmmo = false;
 
-    
+    private bool _refillAmmo = false;
+
+    private int _ammoCount = 15;
+
+
 
 
     // Start is called before the first frame update
@@ -132,6 +136,13 @@ public class Player : MonoBehaviour
             FireLaser();
         }
 
+        if (_refillAmmo)
+        {
+            _ammoCount = 15;
+            _uiManager.UpdateAmmoCount(_ammoCount);
+            _refillAmmo = _outOfAmmo = false; 
+        }
+
     }
 
     void calculateMovement()
@@ -172,8 +183,7 @@ public class Player : MonoBehaviour
             {
                 Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
             }
-
-            _uiManager.UpdateAmmo();
+            updateAmmo();
             playLaserClip();
         }
 
@@ -280,9 +290,23 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void isAmmoEmpty()
+    void updateAmmo()
     {
-        _outOfAmmo = true;
+        if (_ammoCount > 0)
+        {
+            _ammoCount -= 1;
+            _uiManager.UpdateAmmoCount(_ammoCount);
+        }
+        else
+        {
+            _outOfAmmo = true;
+        }
+    }
+
+    public void refillAmmo()
+    {
+        _ammoCount = 15;
+        _refillAmmo = true;
     }
 
     

@@ -12,8 +12,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text _ammoCountText;
 
-    private int _ammoCount = 15;
-
     [SerializeField]
     private Image _LivesImg;
 
@@ -52,17 +50,10 @@ public class UIManager : MonoBehaviour
         _scoreText.text = "Score: " + playerScore.ToString();
     }
 
-    public void UpdateAmmo()
+    public void UpdateAmmoCount(int ammoCount)
     {
-        if (_ammoCount > 0)
-        {
-            _ammoCount -= 1;
-            _ammoCountText.text = "Ammo Count: " + _ammoCount.ToString();
-        }
-        else
-        {
-            _player.isAmmoEmpty();
-        }
+        _ammoCountText.text = "Ammo Count: " + ammoCount.ToString();
+
     }
     // declare Ammo count text
     // function to update Ammo text
