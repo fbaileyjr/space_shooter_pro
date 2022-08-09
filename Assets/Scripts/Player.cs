@@ -323,7 +323,10 @@ public class Player : MonoBehaviour
 
     public void addLife()
     {
-        _lives += 1;
+        if (_lives < 3)
+        {
+            _lives += 1;
+        }
         _uiManager.UpdateLives(_lives);
         _updateEngines();
     }
