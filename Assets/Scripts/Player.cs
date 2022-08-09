@@ -209,18 +209,8 @@ public class Player : MonoBehaviour
 
         _lives--;
         _uiManager.UpdateLives(_lives);
+        _updateEngines();
 
-        switch (_lives)
-        {
-            // show engine failure depending on lives
-            case 2:
-                _right_Engine.SetActive(true);
-                break;
-            case 1:
-                _left_Engine.SetActive(true);
-                break;
-
-        }
 
         if (_lives < 1) 
         {
@@ -303,11 +293,39 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void _updateEngines()
+    {
+        switch (_lives)
+        {
+            // show engine failure depending on lives
+            case 3:
+                _right_Engine.SetActive(false);
+                _left_Engine.SetActive(false);
+                break;
+            case 2:
+                _right_Engine.SetActive(true);
+                _left_Engine.SetActive(false);
+                break;
+            case 1:
+                _left_Engine.SetActive(true);
+                break;
+        }
+    }
+
+    // ------------------ 
+    // demarcation for public voids
+
     public void refillAmmo()
     {
         _ammoCount = 15;
         _refillAmmo = true;
     }
 
+    public void addLife()
+    {
+        _lives += 1;
+        _uiManager.UpdateLives(_lives);
+        _updateEngines();
+    }
     
 }

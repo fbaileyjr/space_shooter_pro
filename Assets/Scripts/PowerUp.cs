@@ -57,6 +57,9 @@ public class PowerUp : MonoBehaviour
                     case 3:
                         player.refillAmmo();
                         break;
+                    case 4:
+                        player.addLife();
+                        break;
                     default:
                         Debug.Log("Default value");
                         break;
