@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     private GameObject _laserPrefab;
 
     [SerializeField]
+    private GameObject _OrbPrefab;
+
+    [SerializeField]
     private GameObject _OutOfAmmoParticle;
 
     [SerializeField]
@@ -46,6 +49,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private bool _isShieldActive = false;
+
+    [SerializeField]
+    private bool _isOrbActive = false;
 
     [SerializeField]
     private GameObject _shield;
@@ -179,6 +185,10 @@ public class Player : MonoBehaviour
             {
                 Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
             }
+            else if (_isOrbActive)
+            {
+                Instantiate(_OrbPrefab, transform.position, Quaternion.identity);
+            }
             else
             {
                 Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
@@ -244,6 +254,12 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         _isSpeedBoostActive = false;
         _speed /= _speedBoostMultiplier;
+    }
+
+    IEnumerator OrbPowerupDownRoutine(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        _isOrbActive = false;
     }
 
     public void ShieldActive()
@@ -330,5 +346,17 @@ public class Player : MonoBehaviour
         _uiManager.UpdateLives(_lives);
         _updateEngines();
     }
-    
+
+    public void isOrbWeaponActive()
+    {
+        _isOrbActive = true;
+        Instantiate(_OrbPrefab, transform.position, Quaternion.identity);
+        StartCoroutine(OrbPowerupDownRoutine(powerupCooldown));
+    }
+
+    // if sec powerup
+    // second shot kick off variable on gloworb
+    // if sec pwerup, shoot from orbs
+    // instead of lasers
+
 }

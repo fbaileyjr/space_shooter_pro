@@ -60,6 +60,9 @@ public class PowerUp : MonoBehaviour
                     case 4:
                         player.addLife();
                         break;
+                    case 5:
+                        player.isOrbWeaponActive();
+                        break;
                     default:
                         Debug.Log("Default value");
                         break;
