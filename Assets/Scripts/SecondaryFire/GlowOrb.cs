@@ -6,7 +6,13 @@ public class GlowOrb : MonoBehaviour
 {
     [SerializeField]
     private float _orbRotateSpeed = 82.0f;
+
+    [SerializeField]
+    private GameObject _orbPrefab;
+
     private Animator[] _orbAnim;
+
+    private Orb[] _glowOrbScript;
 
     void Start()
     {
@@ -16,6 +22,9 @@ public class GlowOrb : MonoBehaviour
         {
             Debug.Log("_enemyAnim is null");
         }
+
+        _glowOrbScript = GetComponentsInChildren<Orb>();
+
     }
 
     // Update is called once per frame
@@ -31,12 +40,22 @@ public class GlowOrb : MonoBehaviour
         _orbRotateSpeed = 41.0f;
         transform.Rotate(Vector3.forward * _orbRotateSpeed * Time.deltaTime);
         yield return new WaitForSeconds(5.0f);
-        foreach(Animator anim in _orbAnim)
-            anim.SetTrigger("isDestroyed");
-            Debug.Log("settrigger for " + 1);
-        // access public void player to set is active to false
-        Destroy(this.gameObject, 1.0f);
+        destroyOrbs();
 
+
+    }
+
+    public void shootOrbsInEachGlowOrb()
+    {
+        foreach (Orb _glowOrbs in _glowOrbScript)
+            _glowOrbs.shootOrb();
+    }
+
+    public void destroyOrbs()
+    {
+        foreach (Animator anim in _orbAnim)
+            anim.SetTrigger("isDestroyed");
+        Destroy(this.gameObject, 1.0f);
 
     }
 

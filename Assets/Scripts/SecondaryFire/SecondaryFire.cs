@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class SecondaryFire : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float _orbSpeed = 8.0f;
+
+    private void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        //transform.position += transform.forward * Time.deltaTime * _orbSpeed;
+        transform.Translate(Vector3.up * _orbSpeed * Time.deltaTime);
+
+        if (transform.position.y > 8f)
+        {
+            Destroy(this.gameObject);
+        }
     }
+
 
     // need fuction
     // to shoot orbs

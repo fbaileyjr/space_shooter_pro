@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3322908894519655663}
   - component: {fileID: 3322908894519655648}
   - component: {fileID: 3322908894519655649}
-  - component: {fileID: 8511886669739244012}
   m_Layer: 0
   m_Name: SecondaryFire
   m_TagString: Untagged
@@ -106,15 +105,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8511886669739244012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3322908894519655650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f2678f4b1b6234982d79e38a7c3060, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

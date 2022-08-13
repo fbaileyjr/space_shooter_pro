@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private GameObject _laserPrefab;
 
     [SerializeField]
-    private GameObject _OrbPrefab;
+    private GameObject _glowOrbPrefab;
 
     [SerializeField]
     private GameObject _OutOfAmmoParticle;
@@ -86,6 +86,10 @@ public class Player : MonoBehaviour
 
     private int _ammoCount = 15;
 
+    private GameObject _glowOrb;
+
+    private GlowOrb _gOrbScript;
+
 
 
 
@@ -97,6 +101,7 @@ public class Player : MonoBehaviour
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _audioSource = GetComponent<AudioSource>();
         _shieldHealth = _shield.GetComponent<ShieldHealth>();
+
 
         if (_spawnManager == null)
         {
@@ -131,6 +136,7 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("ShieldHealth on player is null");
         }
+
     }
 
     void Update()
@@ -183,18 +189,28 @@ public class Player : MonoBehaviour
         {
             if (_isTripleShotActive)
             {
+                if (_isOrbActive)
+                {
+                    _isOrbActive = false;
+                    _gOrbScript.destroyOrbs();
+                }
+
+
                 Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+                playLaserClip();
             }
             else if (_isOrbActive)
             {
-                Instantiate(_OrbPrefab, transform.position, Quaternion.identity);
+                _gOrbScript.shootOrbsInEachGlowOrb();
+
             }
             else
             {
                 Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
+                playLaserClip();
             }
             updateAmmo();
-            playLaserClip();
+
         }
 
         if (_outOfAmmo)
@@ -256,9 +272,9 @@ public class Player : MonoBehaviour
         _speed /= _speedBoostMultiplier;
     }
 
-    IEnumerator OrbPowerupDownRoutine(float waitTime)
+    IEnumerator OrbPowerupDownRoutine()
     {
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(6.0f);
         _isOrbActive = false;
     }
 
@@ -350,8 +366,11 @@ public class Player : MonoBehaviour
     public void isOrbWeaponActive()
     {
         _isOrbActive = true;
-        Instantiate(_OrbPrefab, transform.position, Quaternion.identity);
-        StartCoroutine(OrbPowerupDownRoutine(powerupCooldown));
+        // Instantiate(_glowOrbPrefab, transform.position, Quaternion.identity);
+        _glowOrb = Instantiate(_glowOrbPrefab, transform.position, Quaternion.identity);
+        _glowOrb.transform.parent = this.transform;
+        _gOrbScript = _glowOrb.GetComponent<GlowOrb>();
+        StartCoroutine(OrbPowerupDownRoutine());
     }
 
     // if sec powerup
