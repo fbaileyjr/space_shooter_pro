@@ -126,4 +126,8 @@ public class Enemy : MonoBehaviour
 
     }
 
+    // if orb
+    // destroy this object
+    // maybe create a new label for orb
+
 }

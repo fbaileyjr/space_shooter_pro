@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     private GameObject _laserPrefab;
 
     [SerializeField]
+    private GameObject _glowOrbPrefab;
+
+    [SerializeField]
     private GameObject _OutOfAmmoParticle;
 
     [SerializeField]
@@ -48,6 +51,9 @@ public class Player : MonoBehaviour
     private bool _isShieldActive = false;
 
     [SerializeField]
+    private bool _isOrbActive = false;
+
+    [SerializeField]
     private GameObject _shield;
 
     [SerializeField]
@@ -80,6 +86,10 @@ public class Player : MonoBehaviour
 
     private int _ammoCount = 15;
 
+    private GameObject _glowOrb;
+
+    private GlowOrb _gOrbScript;
+
 
 
 
@@ -91,6 +101,7 @@ public class Player : MonoBehaviour
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _audioSource = GetComponent<AudioSource>();
         _shieldHealth = _shield.GetComponent<ShieldHealth>();
+
 
         if (_spawnManager == null)
         {
@@ -125,6 +136,7 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("ShieldHealth on player is null");
         }
+
     }
 
     void Update()
@@ -177,14 +189,28 @@ public class Player : MonoBehaviour
         {
             if (_isTripleShotActive)
             {
+                if (_isOrbActive)
+                {
+                    _isOrbActive = false;
+                    _gOrbScript.destroyOrbs();
+                }
+
+
                 Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+                playLaserClip();
+            }
+            else if (_isOrbActive)
+            {
+                _gOrbScript.shootOrbsInEachGlowOrb();
+
             }
             else
             {
                 Instantiate(_laserPrefab, transform.position + new Vector3(0, _laserOffset, 0), Quaternion.identity);
+                playLaserClip();
             }
             updateAmmo();
-            playLaserClip();
+
         }
 
         if (_outOfAmmo)
@@ -244,6 +270,12 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         _isSpeedBoostActive = false;
         _speed /= _speedBoostMultiplier;
+    }
+
+    IEnumerator OrbPowerupDownRoutine()
+    {
+        yield return new WaitForSeconds(6.0f);
+        _isOrbActive = false;
     }
 
     public void ShieldActive()
@@ -330,5 +362,20 @@ public class Player : MonoBehaviour
         _uiManager.UpdateLives(_lives);
         _updateEngines();
     }
-    
+
+    public void isOrbWeaponActive()
+    {
+        _isOrbActive = true;
+        // Instantiate(_glowOrbPrefab, transform.position, Quaternion.identity);
+        _glowOrb = Instantiate(_glowOrbPrefab, transform.position, Quaternion.identity);
+        _glowOrb.transform.parent = this.transform;
+        _gOrbScript = _glowOrb.GetComponent<GlowOrb>();
+        StartCoroutine(OrbPowerupDownRoutine());
+    }
+
+    // if sec powerup
+    // second shot kick off variable on gloworb
+    // if sec pwerup, shoot from orbs
+    // instead of lasers
+
 }

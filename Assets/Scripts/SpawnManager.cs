@@ -19,6 +19,10 @@ public class SpawnManager : MonoBehaviour
     private GameObject [] powerups;
 
     [SerializeField]
+    private int _specialPowerupCount = 3;
+
+
+    [SerializeField]
     private GameObject _powerupContainer;
 
     [SerializeField]
@@ -53,13 +57,24 @@ public class SpawnManager : MonoBehaviour
         while (_stopSpawning == false)
         {
             float randomX = Random.Range(-8.0f, 8.0f);
-            int randomPowerup = Random.Range(0, 5);
+            int randomPowerup = Random.Range(0, 6);
+            if (randomPowerup == 5 && _specialPowerupCount > 0)
+            {
+                Debug.Log("Orb selected: " + _specialPowerupCount);
+                _specialPowerupCount--;
+                randomPowerup = Random.Range(0, 4);
+            }
+            else if (randomPowerup == 5 && _specialPowerupCount == 0)
+            {
+                _specialPowerupCount = 3;
+            }
             GameObject newPowerup = Instantiate(powerups[randomPowerup], transform.position + new Vector3(randomX, 8, 0), Quaternion.identity);
             newPowerup.transform.parent = _powerupContainer.transform;
             yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
 
         }
     }
+
 
     public void OnPlayerDeath()
     {
