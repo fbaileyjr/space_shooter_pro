@@ -90,6 +90,10 @@ public class Player : MonoBehaviour
 
     private GlowOrb _gOrbScript;
 
+    private ThrustMeter _thrustMeter;
+
+
+    private bool _refillMeter = false;
 
 
 
@@ -101,6 +105,7 @@ public class Player : MonoBehaviour
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _audioSource = GetComponent<AudioSource>();
         _shieldHealth = _shield.GetComponent<ShieldHealth>();
+        _thrustMeter = GameObject.Find("Thruster_Meter_Bars").GetComponent<ThrustMeter>();
 
 
         if (_spawnManager == null)
@@ -155,6 +160,7 @@ public class Player : MonoBehaviour
             _refillAmmo = _outOfAmmo = false; 
         }
 
+
     }
 
     void calculateMovement()
@@ -169,7 +175,18 @@ public class Player : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.8f, 0));
 
-        thrusterBoost();
+        // calculating thrustmeter
+        if (_thrustMeter.returnFillAmount() >= 0)
+        {
+            thrusterBoost();
+        }
+
+        if (_thrustMeter.returnFillAmount() == 0)
+        {
+            _refillMeter = true;
+            thrusterBoost();
+            StartCoroutine(RefillThruster());
+        }
 
         if (transform.position.x > 11)
         {
@@ -278,6 +295,14 @@ public class Player : MonoBehaviour
         _isOrbActive = false;
     }
 
+    IEnumerator RefillThruster()
+    {
+        _speed /= _thrustMultiplier;
+        _thrustMeter.IsKeyPressed(false);
+        yield return new WaitForSeconds(5.0f / _thrustMeter.returnIncreaseMultiplier());
+        _refillMeter = false;
+    }
+
     public void ShieldActive()
     {
 
@@ -301,14 +326,16 @@ public class Player : MonoBehaviour
 
     void thrusterBoost()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _refillMeter == false)
         {
             _speed *= _thrustMultiplier;
+            _thrustMeter.IsKeyPressed(true);
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift) && _refillMeter == false)
         {
             _speed /= _thrustMultiplier;
+            _thrustMeter.IsKeyPressed(false);
         }
     }
 
