@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
-        _scoreText.text = "Score: " + 0;
+        _scoreText.text = "0";
         _ammoCountText.text = "Ammo Count: " + 15;
 
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateScore(int playerScore)
     {
-        _scoreText.text = "Score: " + playerScore.ToString();
+        _scoreText.text = playerScore.ToString();
     }
 
     public void UpdateAmmoCount(int ammoCount)
