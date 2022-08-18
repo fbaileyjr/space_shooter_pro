@@ -92,8 +92,15 @@ public class Player : MonoBehaviour
 
     private ThrustMeter _thrustMeter;
 
+    private CameraShake _cameraShake;
 
     private bool _refillMeter = false;
+
+    [SerializeField]
+    private float _shakeDuration = .1f;
+
+    [SerializeField]
+    private float _shakeMag = .25f;
 
 
 
@@ -106,7 +113,7 @@ public class Player : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _shieldHealth = _shield.GetComponent<ShieldHealth>();
         _thrustMeter = GameObject.Find("Thruster_Meter_Bars").GetComponent<ThrustMeter>();
-
+        _cameraShake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
 
         if (_spawnManager == null)
         {
@@ -142,6 +149,10 @@ public class Player : MonoBehaviour
             Debug.LogError("ShieldHealth on player is null");
         }
 
+        if (_cameraShake == null)
+        {
+            Debug.Log("CameraShake on player is null");
+        }
     }
 
     void Update()
@@ -250,6 +261,7 @@ public class Player : MonoBehaviour
             return;
         }
 
+        StartCoroutine(_cameraShake.ShakeCamera(_shakeDuration, _shakeMag));
         _lives--;
         _uiManager.UpdateLives(_lives);
         _updateEngines();
