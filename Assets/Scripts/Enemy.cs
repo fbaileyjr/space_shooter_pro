@@ -23,6 +23,13 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     private float _enemyLaserOffset = 1.15f;
+
+    [SerializeField]
+    private float _sideFrequency = .25f;
+
+    [SerializeField]
+    private float _sideAmplitude = .25f;
+
     // declare _enemylaser
     // assign _enemylaser in inspector
     // create an IEnumerator to shoot lasers at random intervals between 3-7 seconds
@@ -34,6 +41,8 @@ public class Enemy : MonoBehaviour
     {
         _explosionAudioSource = GetComponent<AudioSource>();
         _player = GameObject.Find("Player").GetComponent<Player>();
+        _sideFrequency = Random.Range(0.0f, _sideFrequency);
+        _sideAmplitude = Random.Range(0.0f, _sideAmplitude);     
 
         if (_player == null)
         {
@@ -53,17 +62,21 @@ public class Enemy : MonoBehaviour
         }
 
         StartCoroutine(SpawnEnemyLaserRoutine());
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);
 
+        transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);
+        sideMovement();
         if (transform.position.y < -6.0f)
         {
             float randomX = Random.Range(-8.0f, 8.0f);
             transform.position = new Vector3(randomX, 8,0);
+            sideMovement();
         }
 
     }
@@ -126,6 +139,14 @@ public class Enemy : MonoBehaviour
 
     }
 
+    void sideMovement()
+    {
+        float x = transform.position.x + Mathf.Sin(Time.time * _sideFrequency) * _sideAmplitude;
+        float y = transform.position.y;
+        float z = transform.position.z;
+
+        transform.position = new Vector3(x, y, z);
+    }
     // if orb
     // destroy this object
     // maybe create a new label for orb
