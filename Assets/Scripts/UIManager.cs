@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
         _scoreText.text = "0";
-        _ammoCountText.text = "Ammo Count: " + 15;
+        _ammoCountText.text = "15/15";
 
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateAmmoCount(int ammoCount)
     {
-        _ammoCountText.text = "Ammo Count: " + ammoCount.ToString();
+        _ammoCountText.text = ammoCount.ToString() + "/15";
 
     }
     // declare Ammo count text
