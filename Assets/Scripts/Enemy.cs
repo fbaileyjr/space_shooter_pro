@@ -24,11 +24,14 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float _enemyLaserOffset = 1.15f;
 
-    [SerializeField]
-    private float _sideFrequency = .25f;
+    [SerializeField] private float _sideMovementSpeed = 1.0f;
 
     [SerializeField]
-    private float _sideAmplitude = .25f;
+    private float _sideSpeed;
+
+    private float _startPoint;
+    private float _endPoint;
+    private bool _moveRight;
 
     // declare _enemylaser
     // assign _enemylaser in inspector
@@ -41,8 +44,10 @@ public class Enemy : MonoBehaviour
     {
         _explosionAudioSource = GetComponent<AudioSource>();
         _player = GameObject.Find("Player").GetComponent<Player>();
-        _sideFrequency = Random.Range(0.0f, _sideFrequency);
-        _sideAmplitude = Random.Range(0.0f, _sideAmplitude);     
+        _sideSpeed = Random.Range(0.0f, 2.0f);
+        _startPoint = Random.Range(-3.0f, 0.0f);
+        _endPoint = Random.Range(0.0f, 3.0f);
+        _moveRight = Random.Range(0, 2) == 0;
 
         if (_player == null)
         {
@@ -69,14 +74,17 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);
-        sideMovement();
+        if(!_isDestroyed)
+        {
+            sideMovement();
+        }
+
+
         if (transform.position.y < -6.0f)
         {
             float randomX = Random.Range(-8.0f, 8.0f);
             transform.position = new Vector3(randomX, 8,0);
-            sideMovement();
         }
 
     }
@@ -114,8 +122,8 @@ public class Enemy : MonoBehaviour
     void EnemyDeath()
     {
         _isDestroyed = true;
-        _enemyAnim.SetTrigger("OnEnemyDeath");
         _enemySpeed = 0;
+        _enemyAnim.SetTrigger("OnEnemyDeath");
         Collider2D this_collider = gameObject.GetComponent<Collider2D>();
         EnemyExplosion();
         Destroy(GetComponent<Collider2D>());
@@ -133,7 +141,6 @@ public class Enemy : MonoBehaviour
         {
             float randomX = Random.Range(-8.0f, 8.0f);
             GameObject newPowerup = Instantiate(_enemyLaserPrefab, transform.position + new Vector3(0, _enemyLaserOffset, 0), Quaternion.identity);
-            // newPowerup.transform.parent = this.gameObject.transform;
             yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
         }
 
@@ -141,14 +148,26 @@ public class Enemy : MonoBehaviour
 
     void sideMovement()
     {
-        float x = transform.position.x + Mathf.Sin(Time.time * _sideFrequency) * _sideAmplitude;
-        float y = transform.position.y;
-        float z = transform.position.z;
 
-        transform.position = new Vector3(x, y, z);
+        if(transform.position.x > _endPoint)
+        {
+            _moveRight = false;
+        }
+        else if(transform.position.x < _startPoint)
+        {
+            _moveRight = true;
+        }
+
+        if(_moveRight && transform.position.x < _endPoint)
+        {
+            transform.Translate(Vector3.right * _sideSpeed * Time.deltaTime);
+        }
+
+        if(!_moveRight && transform.position.x > _startPoint)
+        {
+            transform.Translate(Vector3.left * _sideSpeed * Time.deltaTime);
+        }
     }
-    // if orb
-    // destroy this object
-    // maybe create a new label for orb
+
 
 }
