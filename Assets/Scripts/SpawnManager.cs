@@ -28,9 +28,24 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private float _healthTimerMultiplier = 2.0f;
 
+    private int _waveCount = 1;
+
+    private UIManager _uiManager;
+
     // Start is called before the first frame update
+
+    void Start()
+    {
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+
+        if (_uiManager == null)
+        {
+            Debug.Log("_uiManger on Spawnmanager is null");
+        }
+    }
     public void StartSpawning()
     {
+        //_uiManager.startWaveText();
         StartCoroutine(SpawnEnemyRoutine(_enemySpawnTime));
         StartCoroutine(SpawnPowerupRoutine());
     }
@@ -75,9 +90,23 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    // need a way to stop the waves
+    // display wave
+    // start spawning again
+
 
     public void OnPlayerDeath()
     {
         _stopSpawning = true;
+    }
+
+    public void resumeSpawning()
+    {
+        _stopSpawning = false;
+    }
+
+    public int currentWaveCount()
+    {
+        return _waveCount;
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -24,9 +25,17 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text _restartText;
 
+    [SerializeField]
+    private TextMeshProUGUI _waveUI;
+
+    private TextMeshPro _waveText;
+
+
     private GameManager _gameManager;
 
     private Player _player;
+
+    private SpawnManager _spawnManager;
 
 
     // Start is called before the first frame update
@@ -35,13 +44,20 @@ public class UIManager : MonoBehaviour
         _player = GameObject.Find("Player").GetComponent<Player>();
         _scoreText.text = "0";
         _ammoCountText.text = "15/15";
+        _waveText = _waveUI.GetComponent<TextMeshPro>();
 
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
 
         if (_gameManager == null)
         {
             Debug.Log("GameManager doesn't exist");
             Debug.Log("GameManager doesn't exist");
+        }
+
+        if (_spawnManager == null)
+        {
+            Debug.Log("_spawnManger not found on UIManager");
         }
     }
 
@@ -90,5 +106,40 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    IEnumerator waveCount()
+    {
+        //_waveText.SetText("WAVE " + _spawnManager.currentWaveCount());
+        int count = 0;
+        while (count < 3)
+        {
+            _waveUI.gameObject.SetActive(true);
+            _waveUI.enabled = true;
+            yield return new WaitForSeconds(1.5f);
+            _waveUI.gameObject.SetActive(false);
+            _waveUI.enabled = false;
+            yield return new WaitForSeconds(.5f);
+            count += 1;
+        }
+
+        _spawnManager.StartSpawning();
+        //_wave
+        //_waveText.text("Wave " + _waveCount);
+
+        //_shield.color = new Color(0, 0, 0, 0);
+        //yield return new WaitForSeconds(0.25f);
+        //_shield.color = _shieldColors[_shieldHealth];
+        //yield return new WaitForSeconds(0.5f);
+    }
+    // after asteroid is destroyeds
+    // variable to hold wave start
+    // text to update the screen on what wave it is currently on
+    // flashing text
+
+    // call function on spawnmanager ot start new wave?
+
+    public void startWaveText()
+    {
+        StartCoroutine(waveCount());
+    }
 
 }
