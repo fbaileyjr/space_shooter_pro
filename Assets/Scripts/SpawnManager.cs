@@ -28,17 +28,40 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private float _healthTimerMultiplier = 2.0f;
 
+    private int _waveCount = 1;
+    private int _currentEnemyCount;
+    private int _targetEnemeyCount;
+
+    private UIManager _uiManager;
+
+    private Coroutine _spawnEnemy;
+    private Coroutine _spawnPowerup;
+
     // Start is called before the first frame update
+
+    void Start()
+    {
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _targetEnemeyCount = _uiManager.returnTargetWaveCount();
+
+        if (_uiManager == null)
+        {
+            Debug.Log("_uiManger on Spawnmanager is null");
+        }
+    }
     public void StartSpawning()
     {
-        StartCoroutine(SpawnEnemyRoutine(_enemySpawnTime));
-        StartCoroutine(SpawnPowerupRoutine());
+        _spawnEnemy = StartCoroutine(SpawnEnemyRoutine(_enemySpawnTime));
+        _spawnPowerup = StartCoroutine(SpawnPowerupRoutine());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (_currentEnemyCount == _targetEnemeyCount)
+        {
+            _stopSpawning = true;
+        }
     }
 
     IEnumerator SpawnEnemyRoutine(float waitTime)
@@ -48,6 +71,7 @@ public class SpawnManager : MonoBehaviour
             float randomX = Random.Range(-8.0f, 8.0f);
             GameObject newEnemy = Instantiate(_enemyPrefab, transform.position + new Vector3(randomX, 8, 0), Quaternion.identity);
             newEnemy.transform.parent = _enemyContainer.transform;
+            _currentEnemyCount += 1;
             yield return new WaitForSeconds(waitTime);
         }
     }
@@ -75,9 +99,43 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    // need a way to stop the waves
+    // display wave
+    // start spawning again
+
 
     public void OnPlayerDeath()
     {
         _stopSpawning = true;
     }
+
+    public void startNextWave()
+    {
+        StopCoroutine(_spawnEnemy);
+        StopCoroutine(_spawnPowerup);
+        _waveCount += 1;
+        _targetEnemeyCount = _uiManager.returnTargetWaveCount();
+        if (_enemySpawnTime > 3.0f)
+        {
+            _enemySpawnTime -= 0.2f;
+        }
+
+    }
+
+    public void stopSpawning()
+    {
+        _stopSpawning = false;
+    }
+
+    public int currentWaveCount()
+    {
+        return _waveCount;
+    }
+
+    public void updateWaveCount(int wave)
+    {
+        _waveCount = wave;
+        _enemySpawnTime = 5.0f;
+    }
+
 }

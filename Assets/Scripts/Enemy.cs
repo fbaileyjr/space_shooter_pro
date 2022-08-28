@@ -33,6 +33,8 @@ public class Enemy : MonoBehaviour
     private float _endPoint;
     private bool _moveRight;
 
+    private UIManager _uiManager;
+
     // declare _enemylaser
     // assign _enemylaser in inspector
     // create an IEnumerator to shoot lasers at random intervals between 3-7 seconds
@@ -48,6 +50,8 @@ public class Enemy : MonoBehaviour
         _startPoint = Random.Range(-3.0f, 0.0f);
         _endPoint = Random.Range(0.0f, 3.0f);
         _moveRight = Random.Range(0, 2) == 0;
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+
 
         if (_player == null)
         {
@@ -64,6 +68,11 @@ public class Enemy : MonoBehaviour
         if (_explosionAudioSource == null)
         {
             Debug.LogError("_explosionAudioSource on Enemy is null");
+        }
+
+        if (_uiManager == null)
+        {
+            Debug.LogError("_uiManager on Enemy is null");
         }
 
         StartCoroutine(SpawnEnemyLaserRoutine());
@@ -125,6 +134,7 @@ public class Enemy : MonoBehaviour
         _enemySpeed = 0;
         _enemyAnim.SetTrigger("OnEnemyDeath");
         Collider2D this_collider = gameObject.GetComponent<Collider2D>();
+        _uiManager.updateEnemyDestroyed();
         EnemyExplosion();
         Destroy(GetComponent<Collider2D>());
         Destroy(this.gameObject, 2.8f);

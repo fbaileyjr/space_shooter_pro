@@ -12,10 +12,19 @@ public class Asteroid : MonoBehaviour
 
     private SpawnManager _spawnManager;
 
+    private UIManager _uIManager;
+
     // Start is called before the first frame update
     private void Start()
     {
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
+        _uIManager = GameObject.Find("Canvas").GetComponent<UIManager>(); 
+
+        if(_uIManager == null)
+        {
+            Debug.Log("_uIManager is null on Asteroid.");
+        }
+
     }
 
     // Update is called once per frame
@@ -35,7 +44,8 @@ public class Asteroid : MonoBehaviour
         if (other.tag == "Laser")
         {
             Instantiate(_asteroidExplosion, transform.position, Quaternion.identity);
-            _spawnManager.StartSpawning();  
+            //_spawnManager.StartSpawning();
+            _uIManager.startWaveText();
             Destroy(other.gameObject);
             Destroy(this.gameObject);
             
