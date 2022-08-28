@@ -81,7 +81,7 @@ public class SpawnManager : MonoBehaviour
         while (_stopSpawning == false)
         {
             float randomX = Random.Range(-8.0f, 8.0f);
-            int randomPowerup = Random.Range(0, 6);
+            int randomPowerup = Random.Range(0, 7);
             if (randomPowerup == 5 && _specialPowerupCount > 0)
             {
                 Debug.Log("Orb selected: " + _specialPowerupCount);

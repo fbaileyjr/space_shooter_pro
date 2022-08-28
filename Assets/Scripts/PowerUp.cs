@@ -63,6 +63,9 @@ public class PowerUp : MonoBehaviour
                     case 5:
                         player.isOrbWeaponActive();
                         break;
+                    case 6:
+                        player.slowPlayerMovement();
+                        break;
                     default:
                         Debug.Log("Default value");
                         break;

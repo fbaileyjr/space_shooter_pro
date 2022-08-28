@@ -315,6 +315,13 @@ public class Player : MonoBehaviour
         _refillMeter = false;
     }
 
+    IEnumerator slowPlayerRoutine()
+    {
+        _speed *= .75f;
+        yield return new WaitForSeconds(5.0f);
+        _speed /= .75f;
+    }
+
     public void ShieldActive()
     {
 
@@ -412,6 +419,10 @@ public class Player : MonoBehaviour
         StartCoroutine(OrbPowerupDownRoutine());
     }
 
+    public void slowPlayerMovement()
+    {
+        StartCoroutine(slowPlayerRoutine());
+    }
     // if sec powerup
     // second shot kick off variable on gloworb
     // if sec pwerup, shoot from orbs
