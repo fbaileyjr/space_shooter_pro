@@ -37,6 +37,9 @@ public class UIManager : MonoBehaviour
 
     private SpawnManager _spawnManager;
 
+    private int _currentEnemyDestroyed = 0;
+    private int _targetWaveCount = 10;
+
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +61,17 @@ public class UIManager : MonoBehaviour
         if (_spawnManager == null)
         {
             Debug.Log("_spawnManger not found on UIManager");
+        }
+    }
+
+    void Update()
+    {
+        if (_currentEnemyDestroyed == _targetWaveCount)
+        {
+            _spawnManager.startNextWave();
+            StartCoroutine(waveCount());
+            _currentEnemyDestroyed = 0;
+            _targetWaveCount += 5;
         }
     }
 
@@ -93,6 +107,7 @@ public class UIManager : MonoBehaviour
         _gameManager.GameOver();
         _gameOverText.gameObject.SetActive(true);
         _restartText.gameObject.SetActive(true);
+        _spawnManager.updateWaveCount(1);
         StartCoroutine(TextFlicker());
     }
     IEnumerator TextFlicker()
@@ -108,10 +123,10 @@ public class UIManager : MonoBehaviour
 
     IEnumerator waveCount()
     {
-        //_waveText.SetText("WAVE " + _spawnManager.currentWaveCount());
         int count = 0;
         while (count < 3)
         {
+            _waveUI.SetText("WAVE " + _spawnManager.currentWaveCount());
             _waveUI.gameObject.SetActive(true);
             _waveUI.enabled = true;
             yield return new WaitForSeconds(1.5f);
@@ -142,4 +157,13 @@ public class UIManager : MonoBehaviour
         StartCoroutine(waveCount());
     }
 
+    public void updateEnemyDestroyed()
+    {
+        _currentEnemyDestroyed += 1;
+    }
+
+    public int returnTargetWaveCount()
+    {
+        return _targetWaveCount;
+    }
 }
