@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1979,6 +1979,71 @@ MonoBehaviour:
   _gameOverText: {fileID: 1315253209}
   _restartText: {fileID: 1290952189}
   _waveUI: {fileID: 682701716}
+--- !u!1001 &1760562392
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3789246278227394909, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: _explosionClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
+    - target: {fileID: 3789246278227394909, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: _enemyLaserPrefab
+      value: 
+      objectReference: {fileID: 8105458288041832452, guid: 378fc2bd8411c8e4199aae41ee3de45a, type: 3}
+    - target: {fileID: 4339655562117737811, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339655562117737811, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339655562117737811, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339655562117737811, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339655562117737811, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339655562117737811, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339655562117737811, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339655562117737811, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339655562117737811, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339655562117737811, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339655562117737811, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148370505925856935, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+      propertyPath: m_Name
+      value: EnemyBlue
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
 --- !u!1 &1811026854
 GameObject:
   m_ObjectHideFlags: 0
