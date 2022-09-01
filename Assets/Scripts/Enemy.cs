@@ -5,6 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
+    private int enemyID;
+
+    [SerializeField]
     private float _enemySpeed = 4.0f;
 
     private Player _player;
@@ -28,6 +31,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     private float _sideSpeed;
+
 
     private float _startPoint;
     private float _endPoint;
@@ -75,6 +79,8 @@ public class Enemy : MonoBehaviour
             Debug.LogError("_uiManager on Enemy is null");
         }
 
+        // maybe switch for id is easier
+        // switch
         StartCoroutine(SpawnEnemyLaserRoutine());
 
 
@@ -95,6 +101,10 @@ public class Enemy : MonoBehaviour
             float randomX = Random.Range(-8.0f, 8.0f);
             transform.position = new Vector3(randomX, 8,0);
         }
+
+        // 
+        // if id is 1 and transform.position.y < transform.position.y of player
+        // star coroutinte for rocket
 
     }
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3789246278227394909}
   m_Layer: 0
   m_Name: EnemyBlue
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1867105123
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8758b79696c2616458d46a38082988cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -97,9 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e768054e5e326643a9fb1fd384b9ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyID: 1
   _enemySpeed: 4
-  _explosionClip: {fileID: 0}
-  _enemyLaserPrefab: {fileID: 0}
+  _explosionClip: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
+  _enemyLaserPrefab: {fileID: 8105458288041832452, guid: 378fc2bd8411c8e4199aae41ee3de45a, type: 3}
   _enemyLaserOffset: 1.15
   _sideMovementSpeed: 1
   _sideSpeed: 0
