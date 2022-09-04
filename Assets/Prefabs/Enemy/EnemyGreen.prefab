@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e768054e5e326643a9fb1fd384b9ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyID: 2
   _enemySpeed: 4
   _explosionClip: {fileID: 0}
   _enemyLaserPrefab: {fileID: 0}

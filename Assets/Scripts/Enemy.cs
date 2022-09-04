@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private int enemyID;
+    private int _enemyID;
 
     [SerializeField]
     private float _enemySpeed = 4.0f;
@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     private float _sideSpeed;
+
+    private bool _canFireProjectile = true;
 
 
     private float _startPoint;
@@ -81,7 +83,22 @@ public class Enemy : MonoBehaviour
 
         // maybe switch for id is easier
         // switch
-        StartCoroutine(SpawnEnemyLaserRoutine());
+        // StartCoroutine(SpawnEnemyLaserRoutine());
+
+        if (_player != null)
+        {
+            switch (_enemyID)
+            {
+                case 0:
+                    StartCoroutine(SpawnEnemyLaserRoutine());
+                    break;
+                case 1:
+                    break;
+                default:
+                    Debug.Log("Default value");
+                    break;
+            }
+        }
 
 
     }
@@ -90,7 +107,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);
-        if(!_isDestroyed)
+        if (!_isDestroyed)
         {
             sideMovement();
         }
@@ -99,13 +116,19 @@ public class Enemy : MonoBehaviour
         if (transform.position.y < -6.0f)
         {
             float randomX = Random.Range(-8.0f, 8.0f);
-            transform.position = new Vector3(randomX, 8,0);
+            transform.position = new Vector3(randomX, 8, 0);
+            _canFireProjectile = true;
         }
 
-        // 
-        // if id is 1 and transform.position.y < transform.position.y of player
-        // star coroutinte for rocket
+        // for enemy ID 1
+        checkIfLower();
 
+
+            // 
+            // if id is 1 and transform.position.y < transform.position.y of player
+            // star coroutinte for rocket
+
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -159,11 +182,29 @@ public class Enemy : MonoBehaviour
     {
         while (_isDestroyed == false)
         {
-            float randomX = Random.Range(-8.0f, 8.0f);
-            GameObject newPowerup = Instantiate(_enemyLaserPrefab, transform.position + new Vector3(0, _enemyLaserOffset, 0), Quaternion.identity);
+            GameObject laserObject = Instantiate(_enemyLaserPrefab, transform.position + new Vector3(0, _enemyLaserOffset, 0), Quaternion.identity);
             yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
         }
 
+    }
+
+    IEnumerator SpawnProjectileRoutine()
+    {
+        _canFireProjectile = false;
+        while (_isDestroyed == false)
+        {
+            GameObject ProjectileObject = Instantiate(_enemyLaserPrefab, transform.position + new Vector3(0, _enemyLaserOffset, 0), Quaternion.identity);
+            yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
+        }
+
+    }
+
+    private void checkIfLower()
+    {
+        if (transform.position.y < _player.transform.position.y && _canFireProjectile == true)
+        {
+            StartCoroutine(SpawnProjectileRoutine());
+        }
     }
 
     void sideMovement()
