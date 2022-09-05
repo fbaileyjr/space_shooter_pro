@@ -73,7 +73,12 @@ public class Enemy : MonoBehaviour
 
         if (_explosionAudioSource == null)
         {
-            Debug.LogError("_explosionAudioSource on Enemy is null");
+            Debug.LogError("_explosionaudiosource on enemy is null");
+        }
+
+        if (_explosionClip == null)
+        {
+            Debug.Log("_explosionClip audio on Enemy is null");
         }
 
         if (_uiManager == null)
@@ -94,6 +99,9 @@ public class Enemy : MonoBehaviour
                     break;
                 case 1:
                     break;
+                case 2:
+                    StartCoroutine(SpawnEnemyLaserRoutine());
+                    break;
                 default:
                     Debug.Log("Default value");
                     break;
@@ -106,12 +114,24 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);
-        if (!_isDestroyed)
+        if (_enemyID == 0 || _enemyID == 2)
         {
-            sideMovement();
+            transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);
+            if (!_isDestroyed)
+            {
+                sideMovement();
+            }
         }
 
+        if (_enemyID == 1)
+        {
+            transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);
+            if (!_isDestroyed)
+            {
+                sideToSide();
+                checkIfLower();
+            }
+        }
 
         if (transform.position.y < -6.0f)
         {
@@ -121,7 +141,7 @@ public class Enemy : MonoBehaviour
         }
 
         // for enemy ID 1
-        checkIfLower();
+        
 
 
             // 
@@ -201,10 +221,14 @@ public class Enemy : MonoBehaviour
 
     private void checkIfLower()
     {
-        if (transform.position.y < _player.transform.position.y && _canFireProjectile == true)
+        if(_player != null)
         {
-            StartCoroutine(SpawnProjectileRoutine());
+            if (transform.position.y < _player.transform.position.y && _canFireProjectile == true)
+            {
+                StartCoroutine(SpawnProjectileRoutine());
+            }
         }
+
     }
 
     void sideMovement()
@@ -228,6 +252,33 @@ public class Enemy : MonoBehaviour
         {
             transform.Translate(Vector3.left * _sideSpeed * Time.deltaTime);
         }
+    }
+
+    private void sideToSide()
+    {
+        if (_player != null)
+        {
+            if (transform.position.y > _player.transform.position.y)
+            {
+                transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);
+            }
+            if (transform.position.y < _player.transform.position.y)
+            {
+                transform.Translate(0, 0, 0);
+
+                if (_player.transform.position.x > transform.position.x)
+                {
+
+                    transform.Translate(Vector3.right * Time.deltaTime * 7);
+                }
+                else if (_player.transform.position.x < transform.position.x)
+                {
+                    transform.Translate(Vector3.left * Time.deltaTime * 7);
+                }
+                
+            }
+        }
+        
     }
 
 

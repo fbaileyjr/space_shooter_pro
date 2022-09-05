@@ -16,6 +16,9 @@ public class EnemyProjectiles : MonoBehaviour
 
     private bool _delayMovement = true;
 
+    [SerializeField]
+    private GameObject _explosion;
+
 
 
     void Start()
@@ -30,33 +33,42 @@ public class EnemyProjectiles : MonoBehaviour
         }
 
         StartCoroutine(_delayRocketMovement());
+        StartCoroutine(_startDestroyTimer());
     }
 
 
     private void FixedUpdate()
     {
-        if (!_delayMovement)
+        if(_target != null)
         {
-            Vector2 direction = (Vector2)_target.position - _rigidBody.position;
-            direction.Normalize();
-            float rotateAmount = Vector3.Cross(direction, transform.up).z;
-            _rigidBody.angularVelocity = -_angleChangingSpeed * rotateAmount;
-            _rigidBody.velocity = transform.up * _movementSpeed;
-
-            if (transform.position.y > 8.0f)
+            if (!_delayMovement)
             {
-                if (transform.parent != null)
+                Vector2 direction = (Vector2)_target.position - _rigidBody.position;
+                direction.Normalize();
+                float rotateAmount = Vector3.Cross(direction, transform.up).z;
+                _rigidBody.angularVelocity = -_angleChangingSpeed * rotateAmount;
+                _rigidBody.velocity = transform.up * _movementSpeed;
+
+                if (transform.position.y > 8.0f)
                 {
-                    Destroy(transform.parent.gameObject);
+                    if (transform.parent != null)
+                    {
+                        Destroy(transform.parent.gameObject);
+                    }
+                    _destroyProjectile();
                 }
-                Destroy(this.gameObject);
+            }
+
+            if (_delayMovement)
+            {
+                transform.Translate(Vector3.up * _defaultProjectspeed * Time.deltaTime);
             }
         }
-
-        if (_delayMovement)
+        else
         {
-            transform.Translate(Vector3.up * _defaultProjectspeed * Time.deltaTime);
+            _destroyProjectile();
         }
+
 
     }
 
@@ -65,6 +77,12 @@ public class EnemyProjectiles : MonoBehaviour
     {
         yield return new WaitForSeconds(0.15f);
         _delayMovement = false;
+    }
+
+    private void _destroyProjectile()
+    {
+        Instantiate(_explosion, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -78,9 +96,14 @@ public class EnemyProjectiles : MonoBehaviour
                 player.Damage();
             }
 
-            Destroy(this.gameObject);
+            _destroyProjectile();
         }
 
+    }
+    IEnumerator _startDestroyTimer()
+    {
+        yield return new WaitForSeconds(3.0f);
+        _destroyProjectile();
     }
 }
 

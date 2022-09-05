@@ -158,6 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultProjectspeed: 8
-  _angleChangingSpeed: 1
-  _movementSpeed: 1
-  movementSpeed: 1
+  _angleChangingSpeed: 120
+  _movementSpeed: 8
+  _explosion: {fileID: 7237872698496777896, guid: d7b70db614d308a4bb282014b55f083f, type: 3}
