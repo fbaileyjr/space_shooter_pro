@@ -77,4 +77,9 @@ public class PowerUp : MonoBehaviour
 
     }
 
+    public int returnPowerupId()
+    {
+        return powerupID;
+    }
+
 }

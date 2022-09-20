@@ -2624,6 +2624,11 @@ MonoBehaviour:
   _specialPowerupCount: 3
   _powerupContainer: {fileID: 933439232}
   _healthTimerMultiplier: 2
+  _lowRatePowerups: []
+  _mediumRatePowerups: []
+  _highRatePowerups:
+  - {fileID: 4631877736149031488, guid: 15766381797078440a2e3a9fdd2f6156, type: 3}
+  - {fileID: 2405417171968853406, guid: f8db20bc1c570c14797c13cc37190aff, type: 3}
 --- !u!4 &2111245391
 Transform:
   m_ObjectHideFlags: 0
