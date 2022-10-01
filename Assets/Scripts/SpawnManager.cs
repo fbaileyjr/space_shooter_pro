@@ -31,24 +31,39 @@ public class SpawnManager : MonoBehaviour
     private int _waveCount = 1;
     private int _currentEnemyCount;
     private int _targetEnemeyCount;
+    private int _totalEnemyCount = 0;
 
     private UIManager _uiManager;
 
     private Coroutine _spawnEnemy;
     private Coroutine _spawnPowerup;
 
-    // arrays for different spawn objects
+    // int for rate of powerups according to enemies spawned
     [SerializeField]
-    private GameObject[] _lowRatePowerups;
+    private int _lowPowerupRate = 25;
 
     [SerializeField]
-    private GameObject[] _mediumRatePowerups;
+    private int _mediumPowerupRate = 10;
+
+    [SerializeField]
+    private int _highPowerupRate = 5;
+
+    // lists for different Powerup objects 
+    [SerializeField]
+    private PowerUp[] _lowRatePowerups;
+
+    [SerializeField]
+    private PowerUp[] _mediumRatePowerups;
 
     [SerializeField]
     private PowerUp[] _highRatePowerups;
 
-    private List<int> _highRateList = new List<int>(); 
+    // lists for different Powerup objects IDs
+    private List<int> _lowRateList = new List<int>();
+    private List<int> _mediumRateList = new List<int>();
+    private List<int> _highRateList = new List<int>();
     // Start is called before the first frame update
+
 
     void Start()
     {
@@ -60,7 +75,28 @@ public class SpawnManager : MonoBehaviour
             Debug.Log("_uiManger on Spawnmanager is null");
         }
 
-        if(_highRatePowerups != null)
+        // _lowRatePowerups
+        // _mediumRatePowerups
+        if (_lowRatePowerups != null)
+        {
+            foreach (PowerUp x in _lowRatePowerups)
+            {
+                _lowRateList.Add(x.returnPowerupId());
+            }
+
+        }
+
+        if (_mediumRatePowerups != null)
+        {
+            foreach (PowerUp x in _mediumRatePowerups)
+            {
+                _mediumRateList.Add(x.returnPowerupId());
+            }
+
+        }
+
+
+        if (_highRatePowerups != null)
         {
             foreach (PowerUp x in _highRatePowerups)
             {
@@ -73,12 +109,17 @@ public class SpawnManager : MonoBehaviour
         {
             Debug.Log("High Rate List is" + y);
         }
+        if(_highRateList.Contains(3))
+        {
+            Debug.Log("The list contains a 3!!!");
+        }
 
     }
     public void StartSpawning()
     {
         _spawnEnemy = StartCoroutine(SpawnEnemyRoutine(_enemySpawnTime));
         _spawnPowerup = StartCoroutine(SpawnPowerupRoutine());
+
     }
 
     // Update is called once per frame
@@ -98,8 +139,13 @@ public class SpawnManager : MonoBehaviour
             GameObject newEnemy = Instantiate(_enemyPrefab[0], transform.position + new Vector3(randomX, 8, 0), Quaternion.identity);
             newEnemy.transform.parent = _enemyContainer.transform;
             _currentEnemyCount += 1;
+            _totalEnemyCount += 1;
             yield return new WaitForSeconds(waitTime);
         }
+
+        // need to add some kind of int for rate
+        // if(mylist.Contains(x) && enemy total = ?)
+
     }
 
     IEnumerator SpawnPowerupRoutine()
@@ -120,6 +166,7 @@ public class SpawnManager : MonoBehaviour
             {
                 _specialPowerupCount = 3;
             }
+
             GameObject newPowerup = Instantiate(powerups[randomPowerup], transform.position + new Vector3(randomX, 8, 0), Quaternion.identity);
             newPowerup.transform.parent = _powerupContainer.transform;
             yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
@@ -131,6 +178,34 @@ public class SpawnManager : MonoBehaviour
     // display wave
     // start spawning again
 
+    private void _spawnRoutine()
+    {
+        if (_highRateList.Contains(3))
+        {
+            Debug.Log("The list contains a 3!!!");
+        }
+        // when enemies hit, choose a random number from list
+        //switch (_powerupID)
+        //{
+        //    case var _ when _lowRateList.Contains(_powerupID):
+
+        //        break;
+        //    case var _ when _mediumRateList.Contains(_powerupID):
+
+        //        break;
+        //    case var _ when _highRateList.Contains(_powerupID):
+
+        //        break;
+        //    default:
+        //        Debug.Log("Default value");
+        //        break;
+        //}
+    }
+    private void _spawnPowerupObject(int _powerupID, int _randomX)
+    {
+        GameObject newPowerup = Instantiate(powerups[_powerupID], transform.position + new Vector3(_randomX, 8, 0), Quaternion.identity);
+        newPowerup.transform.parent = _powerupContainer.transform;
+    }
 
     public void OnPlayerDeath()
     {
@@ -166,20 +241,4 @@ public class SpawnManager : MonoBehaviour
         _enemySpawnTime = 5.0f;
     }
 
-    //private bool _spawnPowerups(int _powerupId, ArrayList _arrayToCheck)
-    //{
-    //    foreach (GameObject x in _arrayToCheck)
-    //    {
-    //        PowerUp _powerup = x.GetComponent<PowerUp>();
-    //        if (_powerup.returnPowerupId().Equals(_powerupId))
-    //        {
-    //            Debug.Log("PowerupId is true ...");
-    //            return true;
-    //        }
-    //        else
-    //        {
-    //            return false;
-    //        }
-    //    }
-    //}
 }
