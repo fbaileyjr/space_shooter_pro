@@ -40,13 +40,13 @@ public class SpawnManager : MonoBehaviour
 
     // int for rate of powerups according to enemies spawned
     [SerializeField]
-    private int _lowPowerupRate = 25;
+    private float _lowPowerupRate = 25.0f;
 
     [SerializeField]
-    private int _mediumPowerupRate = 10;
+    private float _mediumPowerupRate = 10.0f;
 
     [SerializeField]
-    private int _highPowerupRate = 5;
+    private float _highPowerupRate = 5.0f;
 
     // lists for different Powerup objects 
     [SerializeField]
@@ -154,22 +154,9 @@ public class SpawnManager : MonoBehaviour
         {
             // a switch statement to spawn powerup based on enemy count?
 
-            float randomX = Random.Range(-8.0f, 8.0f);
-            int randomPowerup = Random.Range(0, 7);
-            if (randomPowerup == 5 && _specialPowerupCount > 0)
-            {
-                Debug.Log("Orb selected: " + _specialPowerupCount);
-                _specialPowerupCount--;
-                randomPowerup = Random.Range(0, 4);
-            }
-            else if (randomPowerup == 5 && _specialPowerupCount == 0)
-            {
-                _specialPowerupCount = 3;
-            }
-
-            GameObject newPowerup = Instantiate(powerups[randomPowerup], transform.position + new Vector3(randomX, 8, 0), Quaternion.identity);
-            newPowerup.transform.parent = _powerupContainer.transform;
-            yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
+            StartCoroutine(lowRateRoutine());
+            StartCoroutine(mediumRateRoutine());
+            StartCoroutine(highRateRoutine());
 
         }
     }
@@ -178,30 +165,34 @@ public class SpawnManager : MonoBehaviour
     // display wave
     // start spawning again
 
-    private void _spawnRoutine()
+    IEnumerator lowRateRoutine()
     {
-        if (_highRateList.Contains(3))
+        while (_stopSpawning == false)
         {
-            Debug.Log("The list contains a 3!!!");
+            _spawnPowerupObject(_getPowerupID(_lowRateList), _randomX());
+            yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
         }
-        // when enemies hit, choose a random number from list
-        //switch (_powerupID)
-        //{
-        //    case var _ when _lowRateList.Contains(_powerupID):
-
-        //        break;
-        //    case var _ when _mediumRateList.Contains(_powerupID):
-
-        //        break;
-        //    case var _ when _highRateList.Contains(_powerupID):
-
-        //        break;
-        //    default:
-        //        Debug.Log("Default value");
-        //        break;
-        //}
     }
-    private void _spawnPowerupObject(int _powerupID, int _randomX)
+
+    IEnumerator mediumRateRoutine()
+    {
+        while (_stopSpawning == false)
+        {
+            _spawnPowerupObject(_getPowerupID(_mediumRateList), _randomX());
+            yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
+        }
+    }
+
+    IEnumerator highRateRoutine()
+    {
+        while (_stopSpawning == false)
+        {
+            _spawnPowerupObject(_getPowerupID(highRateRoutine), _randomX());
+            yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
+        }
+    }
+
+    private void _spawnPowerupObject(int _powerupID, float _randomX)
     {
         GameObject newPowerup = Instantiate(powerups[_powerupID], transform.position + new Vector3(_randomX, 8, 0), Quaternion.identity);
         newPowerup.transform.parent = _powerupContainer.transform;
@@ -212,6 +203,16 @@ public class SpawnManager : MonoBehaviour
         _stopSpawning = true;
     }
 
+    private float _randomX()
+    {
+        return Random.Range(-8.0f, 8.0f);
+    }
+
+    private int _getPowerupID(List<int> rateList)
+    {
+        int randomPowerup = rateList[Random.Range(0, rateList.Count)];
+        return randomPowerup;
+    }
     public void startNextWave()
     {
         StopCoroutine(_spawnEnemy);
