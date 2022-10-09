@@ -31,12 +31,15 @@ public class SpawnManager : MonoBehaviour
     private int _waveCount = 1;
     private int _currentEnemyCount;
     private int _targetEnemeyCount;
+    private float _powerupSpawnAdjuster = 0.0f;
     private int _totalEnemyCount = 0;
 
     private UIManager _uiManager;
 
     private Coroutine _spawnEnemy;
-    private Coroutine _spawnPowerup;
+    private Coroutine _lowPowerups;
+    private Coroutine _mediumPowerups;
+    private Coroutine _highPowerups;
 
     // int for rate of powerups according to enemies spawned
     [SerializeField]
@@ -117,8 +120,9 @@ public class SpawnManager : MonoBehaviour
     }
     public void StartSpawning()
     {
+        _stopSpawning = false;
         _spawnEnemy = StartCoroutine(SpawnEnemyRoutine(_enemySpawnTime));
-        _spawnPowerup = StartCoroutine(SpawnPowerupRoutine());
+        SpawnPowerupRoutine();
 
     }
 
@@ -148,47 +152,45 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    IEnumerator SpawnPowerupRoutine()
+    private void SpawnPowerupRoutine()
     {
-        while (_stopSpawning == false)
-        {
-            // a switch statement to spawn powerup based on enemy count?
 
-            StartCoroutine(lowRateRoutine());
-            StartCoroutine(mediumRateRoutine());
-            StartCoroutine(highRateRoutine());
-
-        }
+        _lowPowerups = StartCoroutine(lowRateRoutine(_powerupSpawnAdjuster));
+        _mediumPowerups = StartCoroutine(mediumRateRoutine(_powerupSpawnAdjuster));
+        _highPowerups = StartCoroutine(highRateRoutine(_powerupSpawnAdjuster));
     }
 
     // need a way to stop the waves
     // display wave
     // start spawning again
 
-    IEnumerator lowRateRoutine()
+    IEnumerator lowRateRoutine(float adjuster)
     {
         while (_stopSpawning == false)
         {
+            yield return new WaitForSeconds(Random.Range((_lowPowerupRate - 4.0f) - adjuster, _lowPowerupRate - adjuster));
             _spawnPowerupObject(_getPowerupID(_lowRateList), _randomX());
-            yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
+            yield return new WaitForSeconds(Random.Range((_lowPowerupRate - 4.0f) - adjuster, _lowPowerupRate - adjuster));
         }
     }
 
-    IEnumerator mediumRateRoutine()
+    IEnumerator mediumRateRoutine(float adjuster)
     {
         while (_stopSpawning == false)
         {
+            yield return new WaitForSeconds(Random.Range((_mediumPowerupRate - 4.0f) - adjuster, _mediumPowerupRate - adjuster));
             _spawnPowerupObject(_getPowerupID(_mediumRateList), _randomX());
-            yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
+            yield return new WaitForSeconds(Random.Range((_mediumPowerupRate - 4.0f) - adjuster, _mediumPowerupRate - adjuster));
         }
     }
 
-    IEnumerator highRateRoutine()
+    IEnumerator highRateRoutine(float adjuster)
     {
         while (_stopSpawning == false)
         {
-            _spawnPowerupObject(_getPowerupID(highRateRoutine), _randomX());
-            yield return new WaitForSeconds(Random.Range(3.0f, 7.0f));
+            yield return new WaitForSeconds(Random.Range((_highPowerupRate - 4.0f) - adjuster, _highPowerupRate - adjuster));
+            _spawnPowerupObject(_getPowerupID(_highRateList), _randomX());
+            yield return new WaitForSeconds(Random.Range((_highPowerupRate - 4.0f) - adjuster, _highPowerupRate - adjuster));
         }
     }
 
@@ -211,13 +213,19 @@ public class SpawnManager : MonoBehaviour
     private int _getPowerupID(List<int> rateList)
     {
         int randomPowerup = rateList[Random.Range(0, rateList.Count)];
+        Debug.Log("random number is" + randomPowerup);
+
+
         return randomPowerup;
     }
     public void startNextWave()
     {
         StopCoroutine(_spawnEnemy);
-        StopCoroutine(_spawnPowerup);
+        StopCoroutine(_lowPowerups);
+        StopCoroutine(_mediumPowerups);
+        StopCoroutine(_highPowerups);
         _waveCount += 1;
+        _powerupSpawnAdjuster += 1.0f;
         _targetEnemeyCount = _uiManager.returnTargetWaveCount();
         if (_enemySpawnTime > 3.0f)
         {

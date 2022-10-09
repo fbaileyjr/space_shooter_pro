@@ -55,7 +55,6 @@ public class UIManager : MonoBehaviour
         if (_gameManager == null)
         {
             Debug.Log("GameManager doesn't exist");
-            Debug.Log("GameManager doesn't exist");
         }
 
         if (_spawnManager == null)
@@ -69,9 +68,9 @@ public class UIManager : MonoBehaviour
         if (_currentEnemyDestroyed == _targetWaveCount)
         {
             _spawnManager.startNextWave();
-            StartCoroutine(waveCount());
             _currentEnemyDestroyed = 0;
             _targetWaveCount += 5;
+            StartCoroutine(waveCount());
         }
     }
 
@@ -137,20 +136,8 @@ public class UIManager : MonoBehaviour
         }
 
         _spawnManager.StartSpawning();
-        //_wave
-        //_waveText.text("Wave " + _waveCount);
 
-        //_shield.color = new Color(0, 0, 0, 0);
-        //yield return new WaitForSeconds(0.25f);
-        //_shield.color = _shieldColors[_shieldHealth];
-        //yield return new WaitForSeconds(0.5f);
     }
-    // after asteroid is destroyeds
-    // variable to hold wave start
-    // text to update the screen on what wave it is currently on
-    // flashing text
-
-    // call function on spawnmanager ot start new wave?
 
     public void startWaveText()
     {
