@@ -43,13 +43,13 @@ public class SpawnManager : MonoBehaviour
 
     // int for rate of powerups according to enemies spawned
     [SerializeField]
-    private float _lowPowerupRate = 25.0f;
+    private float _lowPowerupRate = 40.0f;
 
     [SerializeField]
-    private float _mediumPowerupRate = 10.0f;
+    private float _mediumPowerupRate = 25.0f;
 
     [SerializeField]
-    private float _highPowerupRate = 5.0f;
+    private float _highPowerupRate = 12.0f;
 
     // lists for different Powerup objects 
     [SerializeField]
