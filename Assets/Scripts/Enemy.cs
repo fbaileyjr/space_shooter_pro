@@ -131,7 +131,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (transform.position.y < -6.0f)
+        // implemented this earlier, this fulfils  phase_2_enemy_pickups
         {
             float randomX = Random.Range(-8.0f, 8.0f);
             transform.position = new Vector3(randomX, 8, 0);
