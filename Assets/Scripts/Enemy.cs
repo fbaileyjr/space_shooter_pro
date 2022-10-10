@@ -86,9 +86,6 @@ public class Enemy : MonoBehaviour
             Debug.LogError("_uiManager on Enemy is null");
         }
 
-        // maybe switch for id is easier
-        // switch
-        // StartCoroutine(SpawnEnemyLaserRoutine());
 
         if (_player != null)
         {
@@ -123,6 +120,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        // implemented this earlier, this fulfils phase_2_aggresive_enemy_type
         if (_enemyID == 1)
         {
             transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);
