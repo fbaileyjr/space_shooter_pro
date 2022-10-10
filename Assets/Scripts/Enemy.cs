@@ -131,6 +131,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        // implemented this earlier below, this fulfils phase_2_smart_enemy
         if (transform.position.y < -6.0f)
         {
             float randomX = Random.Range(-8.0f, 8.0f);
@@ -138,15 +139,7 @@ public class Enemy : MonoBehaviour
             _canFireProjectile = true;
         }
 
-        // for enemy ID 1
-        
-
-
-            // 
-            // if id is 1 and transform.position.y < transform.position.y of player
-            // star coroutinte for rocket
-
-        
+  
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -206,6 +199,7 @@ public class Enemy : MonoBehaviour
 
     }
 
+    // phase_2_smart_enemy
     IEnumerator SpawnProjectileRoutine()
     {
         _canFireProjectile = false;
