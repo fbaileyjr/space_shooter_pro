@@ -16,6 +16,10 @@ public class PowerUp : MonoBehaviour
     [SerializeField]
     private AudioClip _clip;
 
+    [SerializeField]
+    private GameObject _powerupExplosion;
+
+
 
     void Update()
     {
@@ -29,6 +33,11 @@ public class PowerUp : MonoBehaviour
         if (_clip == null)
         {
             Debug.LogError("_clip on powerup is set to null");
+        }
+
+        if (_powerupExplosion == null)
+        {
+            Debug.Log("_powerupExplosion on DestroyPowerup.cs is null!");
         }
 
     }
@@ -72,6 +81,12 @@ public class PowerUp : MonoBehaviour
                 }
             }
 
+            Destroy(this.gameObject);
+        }
+        else if (other.tag == "EnemyLaser")
+        {
+            Instantiate(_powerupExplosion, transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
             Destroy(this.gameObject);
         }
 

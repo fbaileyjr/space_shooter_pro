@@ -180,6 +180,10 @@ public class Enemy : MonoBehaviour
         Collider2D this_collider = gameObject.GetComponent<Collider2D>();
         _uiManager.updateEnemyDestroyed();
         EnemyExplosion();
+        foreach (Transform child in transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
         Destroy(GetComponent<Collider2D>());
         Destroy(this.gameObject, 2.8f);
     }
@@ -271,6 +275,11 @@ public class Enemy : MonoBehaviour
             }
         }
         
+    }
+
+    public void shootEnemyLasers()
+    {
+        GameObject laserObject = Instantiate(_enemyLaserPrefab, transform.position + new Vector3(0, _enemyLaserOffset, 0), Quaternion.identity);
     }
 
 
