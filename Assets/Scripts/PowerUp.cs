@@ -19,6 +19,13 @@ public class PowerUp : MonoBehaviour
     [SerializeField]
     private GameObject _powerupExplosion;
 
+    [SerializeField]
+    private float powerupMovementSpeed = 5.0f;
+
+    private Vector2 playerPosition = new Vector2(0.0f, 0.0f);
+
+    private bool moveTowardPlayer = false;
+
 
 
     void Update()
@@ -40,6 +47,10 @@ public class PowerUp : MonoBehaviour
             Debug.Log("_powerupExplosion on DestroyPowerup.cs is null!");
         }
 
+        if (moveTowardPlayer)
+        {
+            movePowerupToPlayer();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -90,6 +101,23 @@ public class PowerUp : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+     if (other.tag == "PowerupZone" && Input.GetKeyDown(KeyCode.C))
+        {
+            playerPosition = other.transform.position;
+            moveTowardPlayer = true;
+        }
+    }
+
+    private void movePowerupToPlayer()
+    {
+        float step = powerupMovementSpeed * Time.deltaTime;
+
+        // move sprite towards the target location
+        transform.position = Vector2.MoveTowards(transform.position, playerPosition, step);
     }
 
     public int returnPowerupId()
