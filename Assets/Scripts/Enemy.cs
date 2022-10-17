@@ -38,6 +38,8 @@ public class Enemy : MonoBehaviour
     private float _startPoint;
     private float _endPoint;
     private bool _moveRight;
+    private bool _dodgeRight = false;
+    private bool _dodgeLeft = false;
 
     private UIManager _uiManager;
 
@@ -139,7 +141,7 @@ public class Enemy : MonoBehaviour
             _canFireProjectile = true;
         }
 
-  
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -217,7 +219,7 @@ public class Enemy : MonoBehaviour
 
     private void checkIfLower()
     {
-        if(_player != null)
+        if (_player != null)
         {
             if (transform.position.y < _player.transform.position.y && _canFireProjectile == true)
             {
@@ -229,24 +231,34 @@ public class Enemy : MonoBehaviour
 
     void sideMovement()
     {
-
-        if(transform.position.x > _endPoint)
+        if (_dodgeLeft)
         {
-            _moveRight = false;
+            transform.Translate(Vector3.left * _enemySpeed * Time.deltaTime);
         }
-        else if(transform.position.x < _startPoint)
+        else if (_dodgeRight)
         {
-            _moveRight = true;
+            transform.Translate(Vector3.right * _enemySpeed * Time.deltaTime);
         }
-
-        if(_moveRight && transform.position.x < _endPoint)
+        else
         {
-            transform.Translate(Vector3.right * _sideSpeed * Time.deltaTime);
-        }
+            if (transform.position.x > _endPoint)
+            {
+                _moveRight = false;
+            }
+            else if (transform.position.x < _startPoint)
+            {
+                _moveRight = true;
+            }
 
-        if(!_moveRight && transform.position.x > _startPoint)
-        {
-            transform.Translate(Vector3.left * _sideSpeed * Time.deltaTime);
+            if (_moveRight && transform.position.x < _endPoint)
+            {
+                transform.Translate(Vector3.right * _sideSpeed * Time.deltaTime);
+            }
+
+            if (!_moveRight && transform.position.x > _startPoint)
+            {
+                transform.Translate(Vector3.left * _sideSpeed * Time.deltaTime);
+            }
         }
     }
 
@@ -271,10 +283,10 @@ public class Enemy : MonoBehaviour
                 {
                     transform.Translate(Vector3.left * Time.deltaTime * 7);
                 }
-                
+
             }
         }
-        
+
     }
 
     public void shootEnemyLasers()
@@ -282,5 +294,39 @@ public class Enemy : MonoBehaviour
         GameObject laserObject = Instantiate(_enemyLaserPrefab, transform.position + new Vector3(0, _enemyLaserOffset, 0), Quaternion.identity);
     }
 
+    public void dodgeRight()
+    {
+        StartCoroutine(dodgeRightRoutine());
+    }
 
+    public void dodgeLeft()
+    {
+        StartCoroutine(dodgeLeftRoutine());
+    }
+
+    IEnumerator dodgeRightRoutine()
+    {
+        if (_shouldDodge())
+        {
+            _dodgeRight = true;
+            yield return new WaitForSeconds(1.5f);
+            _dodgeRight = false;
+        }
+    }
+
+    IEnumerator dodgeLeftRoutine()
+    {
+        if (_shouldDodge())
+        {
+            _dodgeLeft = true;
+            yield return new WaitForSeconds(1.5f);
+            _dodgeLeft = false;
+        }
+    }
+
+    private bool _shouldDodge()
+    {
+        bool _dodge = (Random.Range(0, 2) == 0);
+        return _dodge;
+    }
 }
