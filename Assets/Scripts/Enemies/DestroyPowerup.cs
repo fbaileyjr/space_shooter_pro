@@ -35,5 +35,22 @@ public class DestroyPowerup : MonoBehaviour
         {
             parentEnemy.shootEnemyLasers();
         }
+
+        else if (other.tag == "Laser")
+        {
+            Vector2 laserDirection = this.transform.InverseTransformDirection(other.transform.position);
+
+            if (laserDirection.x < 0)
+            {
+                Debug.Log("Moving Right!");
+                parentEnemy.dodgeRight();
+            }
+            else if (laserDirection.x > 0)
+            {
+                Debug.Log("Moving Left!");
+                parentEnemy.dodgeLeft();
+            }
+        }
     }
+
 }
