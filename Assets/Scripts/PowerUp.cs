@@ -86,6 +86,9 @@ public class PowerUp : MonoBehaviour
                     case 6:
                         player.slowPlayerMovement();
                         break;
+                    case 7:
+                        player.homingMissle();
+                        break;
                     default:
                         Debug.Log("Default value");
                         break;
