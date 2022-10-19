@@ -38,6 +38,8 @@ public class Enemy : MonoBehaviour
     private float _startPoint;
     private float _endPoint;
     private bool _moveRight;
+
+
     private bool _dodgeRight = false;
     private bool _dodgeLeft = false;
 

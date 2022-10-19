@@ -2245,6 +2245,7 @@ MonoBehaviour:
   _laserSoundClip: {fileID: 8300000, guid: 75676f361bdfeaf41a46623e95df3dbc, type: 3}
   _audioSource: {fileID: 0}
   _thrustMultiplier: 1.5
+  _homingMissilePrefab: {fileID: 5016366482868210227, guid: 37586234f0f5f88488c85f2d4afcd271, type: 3}
   _shakeDuration: 0.1
   _shakeMag: 0.25
 --- !u!212 &2065288902
@@ -2588,6 +2589,7 @@ MonoBehaviour:
   - {fileID: 2244200761407000563, guid: 54801afd52a06bb45b60338998e7bc15, type: 3}
   - {fileID: 8490222021808053472, guid: 1ce5f3529ae47b04eafd70dff36ea034, type: 3}
   - {fileID: 3897900072233235012, guid: f8db20bc1c570c14797c13cc37190aff, type: 3}
+  - {fileID: 6584934597676174414, guid: 6bd35811cddf11648914204457cfa1e7, type: 3}
   _specialPowerupCount: 3
   _powerupContainer: {fileID: 933439232}
   _healthTimerMultiplier: 2
@@ -2601,6 +2603,7 @@ MonoBehaviour:
   - {fileID: 6181033823853465835, guid: d4a12b406fce1f3499630bb73f9f6354, type: 3}
   - {fileID: 6988094393693688651, guid: 43b379b2fa3638044961e2df5e6179c2, type: 3}
   - {fileID: 7208652678324119679, guid: 0fb31832a1ec8734386612bf2113d069, type: 3}
+  - {fileID: 6584934597676174409, guid: 6bd35811cddf11648914204457cfa1e7, type: 3}
   _highRatePowerups:
   - {fileID: 4631877736149031488, guid: 15766381797078440a2e3a9fdd2f6156, type: 3}
   - {fileID: 2405417171968853406, guid: f8db20bc1c570c14797c13cc37190aff, type: 3}

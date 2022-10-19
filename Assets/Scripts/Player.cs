@@ -90,11 +90,17 @@ public class Player : MonoBehaviour
 
     private GlowOrb _gOrbScript;
 
+    private bool _isHomingMissle = false;
+
     private ThrustMeter _thrustMeter;
 
     private CameraShake _cameraShake;
 
     private bool _refillMeter = false;
+
+    [SerializeField]
+    private GameObject _homingMissilePrefab;
+
 
     [SerializeField]
     private float _shakeDuration = .1f;
@@ -152,6 +158,11 @@ public class Player : MonoBehaviour
         if (_cameraShake == null)
         {
             Debug.Log("CameraShake on player is null");
+        }
+
+        if (_homingMissilePrefab == null)
+        {
+            Debug.Log("_homingMissilePrefab is null");
         }
     }
 
@@ -231,6 +242,10 @@ public class Player : MonoBehaviour
             {
                 _gOrbScript.shootOrbsInEachGlowOrb();
 
+            }
+            else if (_isHomingMissle)
+            {
+                Instantiate(_homingMissilePrefab, transform.position, Quaternion.identity);
             }
             else
             {
@@ -320,6 +335,13 @@ public class Player : MonoBehaviour
         _speed *= .75f;
         yield return new WaitForSeconds(5.0f);
         _speed /= .75f;
+    }
+
+    IEnumerator HomingMissleRoutine()
+    {
+        _isHomingMissle = true;
+        yield return new WaitForSeconds(5.0f);
+        _isHomingMissle = false;
     }
 
     public void ShieldActive()
@@ -423,9 +445,10 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(slowPlayerRoutine());
     }
-    // if sec powerup
-    // second shot kick off variable on gloworb
-    // if sec pwerup, shoot from orbs
-    // instead of lasers
+
+    public void homingMissle()
+    {
+        StartCoroutine(HomingMissleRoutine());
+    }
 
 }
