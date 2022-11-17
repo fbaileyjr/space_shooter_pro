@@ -67,6 +67,17 @@ public class SpawnManager : MonoBehaviour
     private List<int> _highRateList = new List<int>();
     // Start is called before the first frame update
 
+    [SerializeField]
+    private int _targetBossWaveCount = 5;
+
+    private bool _isFirstBossEncounter = false;
+
+    [SerializeField]
+    private GameObject _firstBoss;
+
+    [SerializeField]
+    private GameObject _firstPortal;
+
 
     void Start()
     {
@@ -117,7 +128,18 @@ public class SpawnManager : MonoBehaviour
             Debug.Log("The list contains a 3!!!");
         }
 
-    }
+        if (_firstBoss == null)
+        {
+            Debug.Log("_firstBoss empty");
+        }
+
+        if (_firstPortal == null)
+        {
+            Debug.Log("_firstBoss empty");
+        }
+
+
+}
     public void StartSpawning()
     {
         _stopSpawning = false;
@@ -132,6 +154,13 @@ public class SpawnManager : MonoBehaviour
         if (_currentEnemyCount == _targetEnemeyCount)
         {
             _stopSpawning = true;
+        }
+
+        if (_isFirstBossEncounter)
+        {
+            // coroutine to match wave text
+            GameObject firstPortal = Instantiate(_firstPortal, transform.position + new Vector3(0, 3.5f, 0), Quaternion.identity);
+            _isFirstBossEncounter = false;
         }
     }
 

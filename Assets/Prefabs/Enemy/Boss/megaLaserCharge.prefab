@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5217442228354366788}
   m_Layer: 0
-  m_Name: megaLaser
+  m_Name: megaLaserCharge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
