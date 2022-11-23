@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2807533551598659488}
   - component: {fileID: 2807533551598659489}
   - component: {fileID: 1276150203}
-  - component: {fileID: 6565228475036135022}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -120,20 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 9.5
-  _targetObject: {fileID: 0}
-  _activeDelay: 8
---- !u!114 &6565228475036135022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2807533551598659490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c376c8f7a25ea5e4894cd54d5650ed21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 9.5
-  _targetObject: {fileID: 0}
+  _targetObject: {fileID: 8586276086355249063, guid: 39ba798742410ff429b91ef3a0173489, type: 3}
   _activeDelay: 8

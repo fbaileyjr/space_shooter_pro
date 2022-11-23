@@ -27,6 +27,6 @@ public class DestroyObjectAfterAnimation : MonoBehaviour
     IEnumerator _setActiveTarget(GameObject _target)
     {
         yield return new WaitForSeconds(_activeDelay);
-        _targetObject.SetActive(true);
+        GameObject bossGameObject = Instantiate(_target, new Vector3(0, 3.5f, 0), Quaternion.identity);
     }
 }

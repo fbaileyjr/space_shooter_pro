@@ -40,6 +40,8 @@ public class UIManager : MonoBehaviour
     private int _currentEnemyDestroyed = 0;
     private int _targetWaveCount = 10;
 
+    [SerializeField]
+    private int _targetFirstBossWaveCount = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -135,8 +137,17 @@ public class UIManager : MonoBehaviour
             count += 1;
         }
 
-        _spawnManager.StartSpawning();
-
+        // if wave count = targetbosscount
+        // spawn boss
+        // other wise regular count
+        if ( _spawnManager.currentWaveCount() == _targetFirstBossWaveCount)
+        {
+            _spawnManager.spawnFirstBoss();
+        }
+        else
+        {
+            _spawnManager.StartSpawning();
+        }
     }
 
     public void startWaveText()

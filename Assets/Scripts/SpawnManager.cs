@@ -28,7 +28,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private float _healthTimerMultiplier = 2.0f;
 
+    [SerializeField]
     private int _waveCount = 1;
+
     private int _currentEnemyCount;
     private int _targetEnemeyCount;
     private float _powerupSpawnAdjuster = 0.0f;
@@ -67,10 +69,6 @@ public class SpawnManager : MonoBehaviour
     private List<int> _highRateList = new List<int>();
     // Start is called before the first frame update
 
-    [SerializeField]
-    private int _targetBossWaveCount = 5;
-
-    private bool _isFirstBossEncounter = false;
 
     [SerializeField]
     private GameObject _firstBoss;
@@ -156,12 +154,6 @@ public class SpawnManager : MonoBehaviour
             _stopSpawning = true;
         }
 
-        if (_isFirstBossEncounter)
-        {
-            // coroutine to match wave text
-            GameObject firstPortal = Instantiate(_firstPortal, transform.position + new Vector3(0, 3.5f, 0), Quaternion.identity);
-            _isFirstBossEncounter = false;
-        }
     }
 
     IEnumerator SpawnEnemyRoutine(float waitTime)
@@ -223,6 +215,12 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    IEnumerator startBossSequence(GameObject gameObjectToSpawn)
+    {
+        yield return new WaitForSeconds(0.50f);
+        GameObject bossGameObject = Instantiate(gameObjectToSpawn, new Vector3(0, 3.5f, 0), Quaternion.identity);
+    }
+
     private void _spawnPowerupObject(int _powerupID, float _randomX)
     {
         GameObject newPowerup = Instantiate(powerups[_powerupID], transform.position + new Vector3(_randomX, 8, 0), Quaternion.identity);
@@ -260,6 +258,8 @@ public class SpawnManager : MonoBehaviour
         {
             _enemySpawnTime -= 0.2f;
         }
+        // if targetwave count == boss count
+        // start coroutine
 
     }
 
@@ -277,6 +277,12 @@ public class SpawnManager : MonoBehaviour
     {
         _waveCount = wave;
         _enemySpawnTime = 5.0f;
+    }
+
+    public void spawnFirstBoss()
+    {
+        Debug.Log("Spawning first boss..");
+        StartCoroutine(startBossSequence(_firstPortal));
     }
 
 }
