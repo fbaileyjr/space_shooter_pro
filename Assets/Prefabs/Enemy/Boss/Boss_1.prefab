@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8586276086355249059}
   - component: {fileID: 8586276086355249058}
   - component: {fileID: 8586276086355249061}
+  - component: {fileID: -7518860365833499323}
   m_Layer: 0
   m_Name: Boss_1
   m_TagString: Untagged
@@ -333,3 +334,20 @@ PolygonCollider2D:
       - {x: 0.13499999, y: -1.9549999}
       - {x: 0.21499999, y: -1.615}
       - {x: 0.235, y: -1.495}
+--- !u!114 &-7518860365833499323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8586276086355249063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f8082a5079ab5449f8b66de5badfb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isPhaseOne: 1
+  _EBPrefab: {fileID: 7828767366272246015, guid: e591df55c88970e4999de6313e11d049, type: 3}
+  _bossBoltPrefab: {fileID: 552070500096394665, guid: 9cf654dbd4454e1409b387cf969ad0db, type: 3}
+  _megaLaserChargePrefab: {fileID: 5217442228354366795, guid: abd70748050fe314783dd7553e087aa7, type: 3}
+  _texturedMegaLaserPrefab: {fileID: 2854373266127418142, guid: 5bd67ebe402b4104fa86b7839620a11e, type: 3}
