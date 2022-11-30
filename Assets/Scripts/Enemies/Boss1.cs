@@ -30,6 +30,12 @@ public class Boss1 : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField]
+    private bool _startBossFight = true;
+
+    [SerializeField]
+    private bool _stopBossFight = false;
+
+    [SerializeField]
     private bool _isPhaseOne = true;
 
     [SerializeField]
@@ -74,12 +80,29 @@ public class Boss1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(_isPhaseOne && _startBossFight)
+        {
+            StartCoroutine(_phaseOne());
+            _startBossFight = false;
+        }
         
     }
 
     IEnumerator _phaseOne ()
     {
-        yield return new WaitForSeconds(0.50f);
+        bool _moveLeft = _randomBool();
+        yield return new WaitForSeconds(2.0f);
+        GameObject _EB = Instantiate(_EBPrefab, transform.position, Quaternion.identity);
+        // make eb
+        // instantiate orbs, green orbs are created (shooting script needs to be added to orbs)
+        // randomize moving between true or false (left or right)
+        // move lower left
+        // shoot projectiles x 3 seq
+        // move back 
+        // shoot projectiles x 3 seq
+        // move lower right
+        // shoot projectiles  x 3 seq
+        // despawn orbs
     }
 
     IEnumerator _phaseTwo()
@@ -87,6 +110,15 @@ public class Boss1 : MonoBehaviour
         yield return new WaitForSeconds(0.50f);
     }
 
+    private bool _randomBool()
+    {
+        bool _randomValue = (Random.Range(0, 2) == 0);
+        return _randomValue;
+    }
 
+    public void stopBossFight()
+    {
+        _stopBossFight = true;
+    }
 
 }
