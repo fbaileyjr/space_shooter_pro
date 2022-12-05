@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6921370327454797577}
   - component: {fileID: 6921370327454797582}
   - component: {fileID: 6921370327454797583}
+  - component: {fileID: 3071258716389132780}
+  - component: {fileID: 6520417331090511930}
   m_Layer: 0
   m_Name: EnergyBall
   m_TagString: Untagged
@@ -105,3 +107,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3071258716389132780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6921370327454797580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b102f1cccd723e2468b31a62c9c22d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bossProjectile: {fileID: 552070500096394665, guid: 9cf654dbd4454e1409b387cf969ad0db, type: 3}
+--- !u!114 &6520417331090511930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6921370327454797580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b102f1cccd723e2468b31a62c9c22d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bossProjectile: {fileID: 552070500096394665, guid: 9cf654dbd4454e1409b387cf969ad0db, type: 3}
