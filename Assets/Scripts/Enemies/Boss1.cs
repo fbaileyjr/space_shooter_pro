@@ -50,6 +50,11 @@ public class Boss1 : MonoBehaviour
     [SerializeField]
     GameObject _texturedMegaLaserPrefab;
 
+    [SerializeField]
+    private float _bossMovementSpeed = 3.0f;
+
+    private Vector3 _startPos = new Vector3(0f, 3.5f, 0f);
+
     void Start()
     {
 
@@ -91,10 +96,65 @@ public class Boss1 : MonoBehaviour
     IEnumerator _phaseOne ()
     {
         bool _moveLeft = _randomBool();
+        Debug.Log("moveleft value is: " + _moveLeft);
         yield return new WaitForSeconds(2.0f);
         GameObject _EB = Instantiate(_EBPrefab, transform.position, Quaternion.identity);
+        _EB.transform.parent = this.transform;
         // make eb
         // instantiate orbs, green orbs are created (shooting script needs to be added to orbs)
+        yield return new WaitForSeconds(3.0f);
+        Vector3 bLeft = new Vector3(-4.75f, 0f, 0f);
+        Vector3 bRight = new Vector3(4.75f, 0f, 0f);
+        if(_moveLeft)
+        {
+            while (this.transform.position != bLeft)
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, bLeft, _bossMovementSpeed * Time.deltaTime);
+                yield return new WaitForEndOfFrame();
+                _moveLeft = ! _moveLeft;
+            }
+        }
+        else
+        {
+            while (this.transform.position != bRight)
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, bRight, _bossMovementSpeed * Time.deltaTime);
+                yield return new WaitForEndOfFrame();
+                _moveLeft = ! _moveLeft;
+            }
+        }
+        yield return new WaitForSeconds(3.0f);
+        while (this.transform.position != _startPos)
+        {
+            this.transform.position = Vector3.MoveTowards(this.transform.position, _startPos, _bossMovementSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(3.0f);
+        Debug.Log("moveleft value is: " + _moveLeft);
+        if (_moveLeft)
+        {
+            while (this.transform.position != bLeft)
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, bLeft, _bossMovementSpeed * Time.deltaTime);
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        else
+        {
+            while (this.transform.position != bRight)
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, bRight, _bossMovementSpeed * Time.deltaTime);
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        yield return new WaitForSeconds(3.0f);
+        while (this.transform.position != _startPos)
+        {
+            this.transform.position = Vector3.MoveTowards(this.transform.position, _startPos, _bossMovementSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(3.0f);
+
         // randomize moving between true or false (left or right)
         // move lower left
         // shoot projectiles x 3 seq
