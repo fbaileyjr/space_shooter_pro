@@ -100,8 +100,6 @@ public class Boss1 : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         GameObject _EB = Instantiate(_EBPrefab, transform.position, Quaternion.identity);
         _EB.transform.parent = this.transform;
-        // make eb
-        // instantiate orbs, green orbs are created (shooting script needs to be added to orbs)
         yield return new WaitForSeconds(3.0f);
         Vector3 bLeft = new Vector3(-4.75f, 0f, 0f);
         Vector3 bRight = new Vector3(4.75f, 0f, 0f);
@@ -154,17 +152,24 @@ public class Boss1 : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForSeconds(3.0f);
-
-        // randomize moving between true or false (left or right)
-        // move lower left
-        // shoot projectiles x 3 seq
-        // move back 
-        // shoot projectiles x 3 seq
-        // move lower right
-        // shoot projectiles  x 3 seq
-        // despawn orbs
+        //_enemyAnim.SetTrigger("OnEnemyDeath");
+        Animator []animators = _EB.GetComponentsInChildren<Animator>();   
+        foreach (Animator animator in animators)
+        {
+            animator.SetTrigger("isExit");
+        }
+        yield return new WaitForSeconds(2.0f);
+        Destroy(_EB);
     }
 
+    // randomize moving between true or false (left or right)
+    // move lower left
+    // shoot projectiles x 3 seq
+    // move back 
+    // shoot projectiles x 3 seq
+    // move lower right
+    // shoot projectiles  x 3 seq
+    // despawn orbs
     IEnumerator _phaseTwo()
     {
         yield return new WaitForSeconds(0.50f);

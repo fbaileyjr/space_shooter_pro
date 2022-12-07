@@ -29,10 +29,7 @@ public class EnergyBall : StateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GameObject gameObject = animator.gameObject;
-        animator.SetBool("isExit", false);
-        Transform CurrentTransform = gameObject.GetComponent<Transform>();
-        //CurrentTransform.gameObject.SetActive(false);
-        CurrentTransform.parent.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

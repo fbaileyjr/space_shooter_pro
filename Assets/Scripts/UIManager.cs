@@ -125,6 +125,13 @@ public class UIManager : MonoBehaviour
     IEnumerator waveCount()
     {
         int count = 0;
+
+        // only for first boss because the animation is sooo long
+        if (_spawnManager.currentWaveCount() == _targetFirstBossWaveCount)
+        {
+            _spawnManager.spawnFirstBoss();
+        }
+
         while (count < 3)
         {
             _waveUI.SetText("WAVE " + _spawnManager.currentWaveCount());
@@ -142,7 +149,8 @@ public class UIManager : MonoBehaviour
         // other wise regular count
         if ( _spawnManager.currentWaveCount() == _targetFirstBossWaveCount)
         {
-            _spawnManager.spawnFirstBoss();
+            Debug.Log("Passing as boss wave");
+            Debug.Log("Hooraw!");
         }
         else
         {
