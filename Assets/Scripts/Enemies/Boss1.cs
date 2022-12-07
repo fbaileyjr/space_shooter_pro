@@ -37,6 +37,7 @@ public class Boss1 : MonoBehaviour
 
     [SerializeField]
     private bool _isPhaseOne = true;
+    private bool _isPhaseTwo = false;
 
     [SerializeField]
     GameObject _EBPrefab;
@@ -85,12 +86,18 @@ public class Boss1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_isPhaseOne && _startBossFight)
+        if(_isPhaseOne && !_isPhaseTwo)
         {
             StartCoroutine(_phaseOne());
+            _isPhaseOne = false;
             _startBossFight = false;
         }
-        
+
+        if (!_isPhaseOne && _isPhaseTwo)
+        {
+            StartCoroutine(_phaseTwo());
+            _startBossFight = false;
+        }
     }
 
     IEnumerator _phaseOne ()
@@ -160,19 +167,21 @@ public class Boss1 : MonoBehaviour
         }
         yield return new WaitForSeconds(2.0f);
         Destroy(_EB);
+
+        // set to true to start phase 2
+        _isPhaseTwo = true;
     }
 
-    // randomize moving between true or false (left or right)
-    // move lower left
-    // shoot projectiles x 3 seq
-    // move back 
-    // shoot projectiles x 3 seq
-    // move lower right
-    // shoot projectiles  x 3 seq
-    // despawn orbs
     IEnumerator _phaseTwo()
     {
         yield return new WaitForSeconds(0.50f);
+        // move to bottomleft
+        // move across the screen
+        // go back to startPos
+        // move to the bottomRight
+        // move across the screen
+        // go back to startPos
+        // start Phase 1
     }
 
     private bool _randomBool()
