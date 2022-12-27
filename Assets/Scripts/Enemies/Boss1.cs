@@ -49,7 +49,13 @@ public class Boss1 : MonoBehaviour
     GameObject _megaLaserChargePrefab;
 
     [SerializeField]
+    private float _megaLaserChargeOffset = -3.5f;
+
+    [SerializeField]
     GameObject _texturedMegaLaserPrefab;
+
+    [SerializeField]
+    private float _textureLaserOffset = 2.25f;
 
     [SerializeField]
     private float _bossMovementSpeed = 3.0f;
@@ -96,6 +102,7 @@ public class Boss1 : MonoBehaviour
         if (!_isPhaseOne && _isPhaseTwo)
         {
             StartCoroutine(_phaseTwo());
+            _isPhaseTwo = false;
             _startBossFight = false;
         }
     }
@@ -174,14 +181,78 @@ public class Boss1 : MonoBehaviour
 
     IEnumerator _phaseTwo()
     {
+        // instantiate megaball
         yield return new WaitForSeconds(0.50f);
-        // move to bottomleft
-        // move across the screen
-        // go back to startPos
-        // move to the bottomRight
-        // move across the screen
-        // go back to startPos
-        // start Phase 1
+        int _repCount = 2;
+        bool _moveRight = _randomBool();
+        Debug.Log("_moveRight value is: " + _moveRight);
+        yield return new WaitForSeconds(2.0f);
+        Vector3 toTheLeft = new Vector3(-7.5f, 2.5f, 0f);
+        Vector3 toTheRight = new Vector3(7.5f, 2.5f, 0f);
+            
+
+        while (_repCount > 0)
+        {
+            GameObject _megaLaserCharge = Instantiate(_megaLaserChargePrefab, transform.position + new Vector3(0f, _megaLaserChargeOffset, 0), Quaternion.identity);
+            _megaLaserCharge.transform.parent = this.transform;
+            if (_moveRight)
+            {
+                while (this.transform.position != toTheLeft)
+                {
+                    this.transform.position = Vector3.MoveTowards(this.transform.position, toTheLeft, _bossMovementSpeed * Time.deltaTime);
+                    yield return new WaitForEndOfFrame();
+                }
+                yield return new WaitForSeconds(1.0f);
+                _spawnMegaLaser(_megaLaserCharge);
+                yield return new WaitForSeconds(.25f);
+                Destroy(_megaLaserCharge);
+                GameObject _megaLaser = Instantiate(_texturedMegaLaserPrefab, transform.position + new Vector3(0.1f, _textureLaserOffset, 0), Quaternion.identity);
+                _megaLaser.transform.parent = this.transform;
+                yield return new WaitForSeconds(.25f);
+                while (this.transform.position != toTheRight)
+                {
+                    this.transform.position = Vector3.MoveTowards(this.transform.position, toTheRight, _bossMovementSpeed * Time.deltaTime);
+                    yield return new WaitForEndOfFrame();
+                }
+                yield return new WaitForSeconds(1.5f);
+                Destroy(_megaLaser);
+            }
+            else
+            {
+                while (this.transform.position != toTheRight)
+                {
+                    this.transform.position = Vector3.MoveTowards(this.transform.position, toTheRight, _bossMovementSpeed * Time.deltaTime);
+                    yield return new WaitForEndOfFrame();
+                }
+                yield return new WaitForSeconds(1.0f);
+                _spawnMegaLaser(_megaLaserCharge);
+                yield return new WaitForSeconds(.25f);
+                Destroy(_megaLaserCharge);
+                GameObject _megaLaser = Instantiate(_texturedMegaLaserPrefab, transform.position + new Vector3(0.1f, _textureLaserOffset, 0), Quaternion.identity);
+                _megaLaser.transform.parent = this.transform;
+                yield return new WaitForSeconds(.25f);
+                while (this.transform.position != toTheLeft)
+                {
+                    this.transform.position = Vector3.MoveTowards(this.transform.position, toTheLeft, _bossMovementSpeed * Time.deltaTime);
+                    yield return new WaitForEndOfFrame();
+                }
+                yield return new WaitForSeconds(1.5f);
+                Destroy(_megaLaser);
+            }
+
+            yield return new WaitForSeconds(1.5f);
+            while (this.transform.position != _startPos)
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, _startPos, _bossMovementSpeed * Time.deltaTime);
+                yield return new WaitForEndOfFrame();
+            }
+            yield return new WaitForSeconds(3.0f);
+            _repCount -= 1;
+            _moveRight = !_moveRight;
+        }
+        
+        
+        _isPhaseOne = true;
     }
 
     private bool _randomBool()
@@ -190,9 +261,24 @@ public class Boss1 : MonoBehaviour
         return _randomValue;
     }
 
+    private void _spawnMegaLaser(GameObject __megaLaserCharge)
+    {
+        //_enemyAnim.SetTrigger("OnEnemyDeath");
+        Animator[] animators = __megaLaserCharge.GetComponentsInChildren<Animator>();
+        foreach (Animator animator in animators)
+        {
+            if(animator.name == "megaLaserBall")
+            {
+                animator.SetTrigger("isExitMegaLaserBall");
+            }
+        }
+    }
+
     public void stopBossFight()
     {
         _stopBossFight = true;
     }
+
+
 
 }

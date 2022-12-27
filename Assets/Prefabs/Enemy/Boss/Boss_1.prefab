@@ -346,8 +346,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f8082a5079ab5449f8b66de5badfb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startBossFight: 1
+  _stopBossFight: 0
   _isPhaseOne: 1
   _EBPrefab: {fileID: 7828767366272246015, guid: e591df55c88970e4999de6313e11d049, type: 3}
   _bossBoltPrefab: {fileID: 552070500096394665, guid: 9cf654dbd4454e1409b387cf969ad0db, type: 3}
   _megaLaserChargePrefab: {fileID: 5217442228354366795, guid: abd70748050fe314783dd7553e087aa7, type: 3}
+  _megaLaserChargeOffset: -2.8
   _texturedMegaLaserPrefab: {fileID: 2854373266127418142, guid: 5bd67ebe402b4104fa86b7839620a11e, type: 3}
+  _textureLaserOffset: -6.8
+  _bossMovementSpeed: 3
