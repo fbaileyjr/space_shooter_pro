@@ -204,7 +204,7 @@ public class Boss1 : MonoBehaviour
                 }
                 yield return new WaitForSeconds(1.0f);
                 _spawnMegaLaser(_megaLaserCharge);
-                yield return new WaitForSeconds(.25f);
+                yield return new WaitForSeconds(1.0f);
                 Destroy(_megaLaserCharge);
                 GameObject _megaLaser = Instantiate(_texturedMegaLaserPrefab, transform.position + new Vector3(0.1f, _textureLaserOffset, 0), Quaternion.identity);
                 _megaLaser.transform.parent = this.transform;
@@ -226,7 +226,7 @@ public class Boss1 : MonoBehaviour
                 }
                 yield return new WaitForSeconds(1.0f);
                 _spawnMegaLaser(_megaLaserCharge);
-                yield return new WaitForSeconds(.25f);
+                yield return new WaitForSeconds(1.0f);
                 Destroy(_megaLaserCharge);
                 GameObject _megaLaser = Instantiate(_texturedMegaLaserPrefab, transform.position + new Vector3(0.1f, _textureLaserOffset, 0), Quaternion.identity);
                 _megaLaser.transform.parent = this.transform;

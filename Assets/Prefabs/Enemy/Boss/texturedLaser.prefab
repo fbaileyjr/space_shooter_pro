@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 6666230157614640636}
   - component: {fileID: 7464339124449391400}
   - component: {fileID: 1023764573993294403}
+  - component: {fileID: 339869799463627014}
   m_Layer: 0
   m_Name: texturedLaser
-  m_TagString: EnemyLaser
+  m_TagString: MegaProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,3 +155,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &339869799463627014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2854373266127418142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33bbcaf93f2008640b72a126fbc9b3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
