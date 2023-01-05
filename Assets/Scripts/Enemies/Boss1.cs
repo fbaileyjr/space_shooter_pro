@@ -86,7 +86,6 @@ public class Boss1 : MonoBehaviour
         }
 
 
-
     }
 
     // Update is called once per frame
@@ -106,6 +105,7 @@ public class Boss1 : MonoBehaviour
             _startBossFight = false;
         }
     }
+
 
     IEnumerator _phaseOne ()
     {
