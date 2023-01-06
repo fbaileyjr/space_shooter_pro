@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8586276086355249058}
   - component: {fileID: 8586276086355249061}
   - component: {fileID: -7518860365833499323}
+  - component: {fileID: -6850394518210804542}
   m_Layer: 0
   m_Name: Boss_1
   m_TagString: Boss
@@ -356,3 +357,23 @@ MonoBehaviour:
   _texturedMegaLaserPrefab: {fileID: 2854373266127418142, guid: 5bd67ebe402b4104fa86b7839620a11e, type: 3}
   _textureLaserOffset: -6.8
   _bossMovementSpeed: 3
+--- !u!95 &-6850394518210804542
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8586276086355249063}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 179520f6dd64ed9449894794a3bbbdff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

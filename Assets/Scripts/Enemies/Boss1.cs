@@ -62,8 +62,18 @@ public class Boss1 : MonoBehaviour
 
     private Vector3 _startPos = new Vector3(0f, 3.5f, 0f);
 
+    Animator _bossAnimator;
+
+    Vector2 _prevPos;
+    Vector2 _newPos;
+    Vector2 _bossVelocity;
+
     void Start()
     {
+        _bossAnimator = GetComponent<Animator>();
+        _prevPos = transform.position;
+        _newPos = transform.position;
+
 
         if (_EBPrefab == null)
         {
@@ -85,6 +95,10 @@ public class Boss1 : MonoBehaviour
             Debug.Log("_texturedMegaLaserPrefab on Boss1 is null!");
         }
 
+        if (_bossAnimator == null)
+        {
+            Debug.Log("_bossAnimator on Boss1 is null!");
+        }
 
     }
 
@@ -106,6 +120,16 @@ public class Boss1 : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        _newPos = transform.position;  
+        _bossVelocity = (_newPos - _prevPos) / Time.fixedDeltaTime;  // velocity = dist/time
+        _prevPos = _newPos;  // update position for next frame calculation
+
+
+        _bossAnimator.SetFloat("Boss1Idle", _bossVelocity.x) ;
+        Debug.Log("bossSpeed is: " + _bossVelocity.x);
+    }
 
     IEnumerator _phaseOne ()
     {

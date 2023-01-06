@@ -2601,6 +2601,7 @@ MonoBehaviour:
   _enemyPrefab:
   - {fileID: 9088856013021700491, guid: bbe2a835cec909942b2b43fe2577c1b3, type: 3}
   - {fileID: 6148370505925856935, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+  - {fileID: 7140418137961174086, guid: 5ce1384071da7d0458502feed7e2329b, type: 3}
   _enemyContainer: {fileID: 1643378417}
   _enemySpawnTime: 5
   powerups:

@@ -45,6 +45,12 @@ public class Enemy : MonoBehaviour
 
     private UIManager _uiManager;
 
+    Animator _enemyAnimator;
+
+    Vector2 _prevPos;
+    Vector2 _newPos;
+    Vector2 _enemyVelocity;
+
     // declare _enemylaser
     // assign _enemylaser in inspector
     // create an IEnumerator to shoot lasers at random intervals between 3-7 seconds
@@ -61,6 +67,7 @@ public class Enemy : MonoBehaviour
         _endPoint = Random.Range(0.0f, 3.0f);
         _moveRight = Random.Range(0, 2) == 0;
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _enemyAnimator = GetComponent<Animator>();
 
 
         if (_player == null)
@@ -109,6 +116,10 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        if (_enemyAnimator == null)
+        {
+            Debug.Log("_enemyAnimator is null!");
+        }
 
     }
 
@@ -144,6 +155,16 @@ public class Enemy : MonoBehaviour
         }
 
 
+    }
+
+    private void FixedUpdate()
+    {
+        _newPos = transform.position;
+        _enemyVelocity = (_newPos - _prevPos) / Time.fixedDeltaTime;  // velocity = dist/time
+        _prevPos = _newPos;  // update position for next frame calculation
+
+
+        _enemyAnimator.SetFloat("EnemyIdle", _enemyVelocity.x);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
