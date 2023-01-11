@@ -490,4 +490,9 @@ void calculateMovement()
         StartCoroutine(HomingMissleRoutine());
     }
 
+    public void canShoot(bool shootBool)
+    {
+        _outOfAmmo = shootBool;
+    }
+
 }

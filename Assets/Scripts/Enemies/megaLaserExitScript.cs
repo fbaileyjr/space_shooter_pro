@@ -24,7 +24,7 @@ public class megaLaserExitScript : StateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GameObject gameObject = animator.gameObject;
-        Destroy(gameObject);
+        DestroyImmediate(gameObject);
     }
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

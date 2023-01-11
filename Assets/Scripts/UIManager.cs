@@ -129,6 +129,7 @@ public class UIManager : MonoBehaviour
         // only for first boss because the animation is sooo long
         if (_spawnManager.currentWaveCount() == _targetFirstBossWaveCount)
         {
+            _player.canShoot(true);
             _spawnManager.spawnFirstBoss();
         }
 

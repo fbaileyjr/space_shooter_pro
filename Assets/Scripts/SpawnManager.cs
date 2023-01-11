@@ -13,7 +13,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private float _enemySpawnTime = 5.0f;
 
-    private bool _stopSpawning = false;
+    private bool _stopSpawningEnemies = false;
+    private bool _stopSpawningPowerups = false;
 
     [SerializeField]
     private GameObject [] powerups;
@@ -140,7 +141,7 @@ public class SpawnManager : MonoBehaviour
 }
     public void StartSpawning()
     {
-        _stopSpawning = false;
+        _stopSpawningEnemies = _stopSpawningPowerups = false;
         _spawnEnemy = StartCoroutine(SpawnEnemyRoutine(_enemySpawnTime));
         SpawnPowerupRoutine();
 
@@ -151,14 +152,14 @@ public class SpawnManager : MonoBehaviour
     {
         if (_currentEnemyCount == _targetEnemeyCount)
         {
-            _stopSpawning = true;
+          _stopSpawningEnemies = _stopSpawningPowerups = true;
         }
 
     }
 
     IEnumerator SpawnEnemyRoutine(float waitTime)
     {
-        while (_stopSpawning == false)
+        while (_stopSpawningEnemies == false)
         {
             float randomX = Random.Range(-8.0f, 8.0f);
             GameObject newEnemy = Instantiate(_enemyPrefab[0], transform.position + new Vector3(randomX, 8, 0), Quaternion.identity);
@@ -187,7 +188,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator lowRateRoutine(float adjuster)
     {
-        while (_stopSpawning == false)
+        while (_stopSpawningPowerups == false)
         {
             yield return new WaitForSeconds(Random.Range((_lowPowerupRate - 4.0f) - adjuster, _lowPowerupRate - adjuster));
             _spawnPowerupObject(_getPowerupID(_lowRateList), _randomX());
@@ -197,7 +198,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator mediumRateRoutine(float adjuster)
     {
-        while (_stopSpawning == false)
+        while (_stopSpawningPowerups == false)
         {
             yield return new WaitForSeconds(Random.Range((_mediumPowerupRate - 4.0f) - adjuster, _mediumPowerupRate - adjuster));
             _spawnPowerupObject(_getPowerupID(_mediumRateList), _randomX());
@@ -207,7 +208,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator highRateRoutine(float adjuster)
     {
-        while (_stopSpawning == false)
+        while (_stopSpawningPowerups == false)
         {
             yield return new WaitForSeconds(Random.Range((_highPowerupRate - 4.0f) - adjuster, _highPowerupRate - adjuster));
             _spawnPowerupObject(_getPowerupID(_highRateList), _randomX());
@@ -229,7 +230,7 @@ public class SpawnManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
-        _stopSpawning = true;
+        _stopSpawningEnemies = _stopSpawningPowerups = true;
     }
 
     private float _randomX()
@@ -265,7 +266,7 @@ public class SpawnManager : MonoBehaviour
 
     public void stopSpawning()
     {
-        _stopSpawning = false;
+        _stopSpawningEnemies = _stopSpawningPowerups = false;
     }
 
     public int currentWaveCount()
@@ -282,6 +283,8 @@ public class SpawnManager : MonoBehaviour
     public void spawnFirstBoss()
     {
         Debug.Log("Spawning first boss..");
+        _stopSpawningPowerups = false;
+        SpawnPowerupRoutine();
         StartCoroutine(startBossSequence(_firstPortal));
     }
 

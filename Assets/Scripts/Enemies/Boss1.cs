@@ -64,6 +64,22 @@ public class Boss1 : MonoBehaviour
 
     Animator _bossAnimator;
 
+    [SerializeField]
+    private int _bossHealth = 10;
+
+    private Boss1_Health _bossHealthBar;
+    private Player _player;
+    private float _bossDamage;
+    private float _bossHealthThreshold;
+
+    [SerializeField]
+    private float _bossThresholdMultiplier = .40f;
+
+    [SerializeField]
+    private AudioSource _explosionAudioSource;
+
+    private SpawnManager _spawnManager;
+
     Vector2 _prevPos;
     Vector2 _newPos;
     Vector2 _bossVelocity;
@@ -74,6 +90,19 @@ public class Boss1 : MonoBehaviour
         _prevPos = transform.position;
         _newPos = transform.position;
 
+        _bossHealthBar = this.transform.GetChild(0).transform.Find("Boss1_Health_Bar").GetComponent<Boss1_Health>();
+        //GameObject _boss1_Health_Canvas = this.transform.GetChild(0).gameObject;
+        //_bossHealth = ReturnDecendantOfParent(_boss1_Health_Canvas, "Boss1_Health_Bar" )
+        _player = GameObject.Find("Player").GetComponent<Player>();
+        _bossDamage = 1.0f/_bossHealth;
+        _bossHealthThreshold = _bossHealth * _bossThresholdMultiplier;
+
+        _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
+
+        if (_spawnManager == null)
+        {
+            Debug.Log("_spawnManger not found on UIManager");
+        }
 
         if (_EBPrefab == null)
         {
@@ -98,6 +127,16 @@ public class Boss1 : MonoBehaviour
         if (_bossAnimator == null)
         {
             Debug.Log("_bossAnimator on Boss1 is null!");
+        }
+
+        if (_bossHealthBar == null)
+        {
+            Debug.LogWarning("_bossHealthBar is null on Boss1!");
+        }
+
+        if (_player == null)
+        {
+            Debug.LogError("_player on Enemy is null");
         }
 
     }
@@ -128,7 +167,6 @@ public class Boss1 : MonoBehaviour
 
 
         _bossAnimator.SetFloat("Boss1Idle", _bossVelocity.x) ;
-        Debug.Log("bossSpeed is: " + _bossVelocity.x);
     }
 
     IEnumerator _phaseOne ()
@@ -138,7 +176,14 @@ public class Boss1 : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         GameObject _EB = Instantiate(_EBPrefab, transform.position, Quaternion.identity);
         _EB.transform.parent = this.transform;
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+        yield return new WaitForSeconds(1.0f);
+        _player.canShoot(false);
+        yield return new WaitForSeconds(1.5f);
         Vector3 bLeft = new Vector3(-4.75f, 0f, 0f);
         Vector3 bRight = new Vector3(4.75f, 0f, 0f);
         if(_moveLeft)
@@ -303,6 +348,47 @@ public class Boss1 : MonoBehaviour
         _stopBossFight = true;
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Hit: " + other.transform.name);
 
+        // use tags
+        if (other.tag == "Player")
+        {
+            if (_player != null)
+            {
+                _player.Damage();
+            }
+
+            //EnemyDeath();
+        }
+
+        if (other.tag == "Laser")
+        {
+            Destroy(other.gameObject);
+
+            Debug.Log("Hit by laser!");
+            _bossHealth -= 1;
+            _bossHealthBar._decreaseHealthBar(_bossDamage);
+
+            if (_bossHealth < _bossHealthThreshold)
+            {
+                _bossHealthBar._changeToRedFiller();
+            }
+
+            if (_bossHealth < 1)
+            {
+                _spawnManager.stopSpawning();
+                _bossAnimator.SetTrigger("OnBossDeath");
+                _bossMovementSpeed = 0f;
+                foreach (Transform child in transform)
+                {
+                    child.gameObject.SetActive(false);
+                }
+                    
+            }
+        }
+
+    }
 
 }
