@@ -98,6 +98,8 @@ public class Player : MonoBehaviour
 
     private bool _refillMeter = false;
 
+    private Animator _playerAnimator;
+
     [SerializeField]
     private GameObject _homingMissilePrefab;
 
@@ -120,6 +122,7 @@ public class Player : MonoBehaviour
         _shieldHealth = _shield.GetComponent<ShieldHealth>();
         _thrustMeter = GameObject.Find("Thruster_Meter_Bars").GetComponent<ThrustMeter>();
         _cameraShake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
+        _playerAnimator = GetComponent<Animator>();
 
         if (_spawnManager == null)
         {
@@ -164,6 +167,11 @@ public class Player : MonoBehaviour
         {
             Debug.Log("_homingMissilePrefab is null");
         }
+
+        if (_playerAnimator == null)
+        {
+            Debug.Log("_playerAnimator is null");
+        }
     }
 
     void Update()
@@ -185,7 +193,16 @@ public class Player : MonoBehaviour
 
     }
 
-    void calculateMovement()
+    private void FixedUpdate()
+    {
+        float h = Input.GetAxis("Horizontal");
+
+        _playerAnimator.SetFloat("playerIdle", h);
+    }
+
+
+
+void calculateMovement()
     {
         // get movement
         float horiztonalInput = Input.GetAxis("Horizontal");
@@ -218,6 +235,28 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(11, transform.position.y, 0);
         }
+
+        // for animation
+
+
+        //if (horiztonalInput > 0)
+        //{
+        //    _playerAnimator.SetBool("playerRight", true);
+        //    _playerAnimator.SetBool("playerLeft", false);
+        //    _playerAnimator.SetBool("playerIdle", false);
+        //}
+        //else if (horiztonalInput < 0)
+        //{
+        //    _playerAnimator.SetBool("playerRight", false);
+        //    _playerAnimator.SetBool("playerLeft", true);
+        //    _playerAnimator.SetBool("playerIdle", false);
+        //}
+        //else
+        //{
+        //    _playerAnimator.SetBool("playerRight", false);
+        //    _playerAnimator.SetBool("playerLeft", false);
+        //    _playerAnimator.SetBool("playerIdle", true);
+        //}
     }
 
     void FireLaser()
@@ -449,6 +488,11 @@ public class Player : MonoBehaviour
     public void homingMissle()
     {
         StartCoroutine(HomingMissleRoutine());
+    }
+
+    public void canShoot(bool shootBool)
+    {
+        _outOfAmmo = shootBool;
     }
 
 }

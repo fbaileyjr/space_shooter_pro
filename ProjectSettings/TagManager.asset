@@ -9,6 +9,8 @@ TagManager:
   - EnemyLaser
   - Powerup
   - PowerupZone
+  - Boss
+  - MegaProjectile
   layers:
   - Default
   - TransparentFX

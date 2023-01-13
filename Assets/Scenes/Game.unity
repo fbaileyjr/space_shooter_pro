@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -148.41972, w: 0}
+  m_margin: {x: -142.26253, y: 0, z: -271.61612, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1819,7 +1819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -33.4, y: -39.000324}
+  m_AnchoredPosition: {x: -33.4, y: -38.31}
   m_SizeDelta: {x: 95.978516, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1639246046
@@ -2027,6 +2027,7 @@ MonoBehaviour:
   _gameOverText: {fileID: 1315253209}
   _restartText: {fileID: 1290952189}
   _waveUI: {fileID: 682701716}
+  _targetFirstBossWaveCount: 5
 --- !u!1 &1811026854
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,6 +2205,7 @@ GameObject:
   - component: {fileID: 2065288901}
   - component: {fileID: 2065288904}
   - component: {fileID: 2065288905}
+  - component: {fileID: 2065288906}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2442,6 +2444,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &2065288906
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065288900}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a154ae7084667be4c9ecd8138a515ebd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2085141025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2579,6 +2601,7 @@ MonoBehaviour:
   _enemyPrefab:
   - {fileID: 9088856013021700491, guid: bbe2a835cec909942b2b43fe2577c1b3, type: 3}
   - {fileID: 6148370505925856935, guid: 57a5c62afb3563a4c9d1d41f9fd126f2, type: 3}
+  - {fileID: 7140418137961174086, guid: 5ce1384071da7d0458502feed7e2329b, type: 3}
   _enemyContainer: {fileID: 1643378417}
   _enemySpawnTime: 5
   powerups:
@@ -2593,6 +2616,7 @@ MonoBehaviour:
   _specialPowerupCount: 3
   _powerupContainer: {fileID: 933439232}
   _healthTimerMultiplier: 2
+  _waveCount: 1
   _lowPowerupRate: 40
   _mediumPowerupRate: 25
   _highPowerupRate: 12
@@ -2607,6 +2631,8 @@ MonoBehaviour:
   _highRatePowerups:
   - {fileID: 4631877736149031488, guid: 15766381797078440a2e3a9fdd2f6156, type: 3}
   - {fileID: 2405417171968853406, guid: f8db20bc1c570c14797c13cc37190aff, type: 3}
+  _firstBoss: {fileID: 8586276086355249063, guid: 39ba798742410ff429b91ef3a0173489, type: 3}
+  _firstPortal: {fileID: 2807533551598659490, guid: 0cebca830c58e7d408661ce108ca6329, type: 3}
 --- !u!4 &2111245391
 Transform:
   m_ObjectHideFlags: 0
@@ -2634,6 +2660,14 @@ PrefabInstance:
     - target: {fileID: 4054203540103157601, guid: 8e600f12047f839479d85b373191695f, type: 3}
       propertyPath: m_Name
       value: Asteroid
+      objectReference: {fileID: 0}
+    - target: {fileID: 4054203540103157601, guid: 8e600f12047f839479d85b373191695f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4054203540103157601, guid: 8e600f12047f839479d85b373191695f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7563831052863825223, guid: 8e600f12047f839479d85b373191695f, type: 3}
       propertyPath: m_RootOrder

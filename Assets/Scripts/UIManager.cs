@@ -40,6 +40,8 @@ public class UIManager : MonoBehaviour
     private int _currentEnemyDestroyed = 0;
     private int _targetWaveCount = 10;
 
+    [SerializeField]
+    private int _targetFirstBossWaveCount = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -123,20 +125,51 @@ public class UIManager : MonoBehaviour
     IEnumerator waveCount()
     {
         int count = 0;
-        while (count < 3)
+
+        // only for first boss because the animation is sooo long
+        if (_spawnManager.currentWaveCount() == _targetFirstBossWaveCount)
         {
-            _waveUI.SetText("WAVE " + _spawnManager.currentWaveCount());
-            _waveUI.gameObject.SetActive(true);
-            _waveUI.enabled = true;
-            yield return new WaitForSeconds(1.5f);
-            _waveUI.gameObject.SetActive(false);
-            _waveUI.enabled = false;
-            yield return new WaitForSeconds(.5f);
-            count += 1;
+            _player.canShoot(true);
+            _spawnManager.spawnFirstBoss();
+            while (count < 3)
+            {
+                _waveUI.SetText("FINAL WAVE");
+                _waveUI.gameObject.SetActive(true);
+                _waveUI.enabled = true;
+                yield return new WaitForSeconds(1.5f);
+                _waveUI.gameObject.SetActive(false);
+                _waveUI.enabled = false;
+                yield return new WaitForSeconds(.5f);
+                count += 1;
+            }
+        }
+        else
+        {
+            while (count < 3)
+            {
+                _waveUI.SetText("WAVE " + _spawnManager.currentWaveCount());
+                _waveUI.gameObject.SetActive(true);
+                _waveUI.enabled = true;
+                yield return new WaitForSeconds(1.5f);
+                _waveUI.gameObject.SetActive(false);
+                _waveUI.enabled = false;
+                yield return new WaitForSeconds(.5f);
+                count += 1;
+            }
         }
 
-        _spawnManager.StartSpawning();
-
+        // if wave count = targetbosscount
+        // spawn boss
+        // other wise regular count
+        if ( _spawnManager.currentWaveCount() == _targetFirstBossWaveCount)
+        {
+            Debug.Log("Passing as boss wave");
+            Debug.Log("Hooraw!");
+        }
+        else
+        {
+            _spawnManager.StartSpawning();
+        }
     }
 
     public void startWaveText()

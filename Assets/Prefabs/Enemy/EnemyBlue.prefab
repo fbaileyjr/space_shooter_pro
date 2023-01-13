@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4339655562117737811}
   - component: {fileID: 990021234529018423}
-  - component: {fileID: 3789246278227394909}
   - component: {fileID: 1064252915294289417}
   - component: {fileID: 5252165831646248652}
   - component: {fileID: 605981133}
   - component: {fileID: 6607436850191174757}
+  - component: {fileID: 834086734822349817}
   m_Layer: 0
   m_Name: EnemyBlue
   m_TagString: Enemy
@@ -89,25 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3789246278227394909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6148370505925856935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e768054e5e326643a9fb1fd384b9ef4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyID: 1
-  _enemySpeed: 3
-  _explosionClip: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
-  _enemyLaserPrefab: {fileID: 3010797372478666165, guid: 378fc2bd8411c8e4199aae41ee3de45a, type: 3}
-  _enemyLaserOffset: 1.15
-  _sideMovementSpeed: 1
-  _sideSpeed: 0
 --- !u!50 &1064252915294289417
 Rigidbody2D:
   serializedVersion: 4
@@ -325,7 +306,7 @@ Animator:
   m_GameObject: {fileID: 6148370505925856935}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: afe9542987f0c9b4ba780539a958b4e9, type: 2}
+  m_Controller: {fileID: 9100000, guid: a0e34de8d838b5f47aa3b1a7fda8d477, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -431,3 +412,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &834086734822349817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6148370505925856935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d730b171a4f0ed84a96029902f011ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyID: 1
+  _enemySpeed: 3
+  _explosionClip: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
+  _enemyLaserPrefab: {fileID: 3010797372478666165, guid: 378fc2bd8411c8e4199aae41ee3de45a, type: 3}
+  _enemyLaserOffset: 1.15
+  _sideMovementSpeed: 1
+  _sideSpeed: 0
