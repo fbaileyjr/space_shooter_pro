@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -148.41972, w: 0}
+  m_margin: {x: -142.26253, y: 0, z: -271.61612, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2616,7 +2616,7 @@ MonoBehaviour:
   _specialPowerupCount: 3
   _powerupContainer: {fileID: 933439232}
   _healthTimerMultiplier: 2
-  _waveCount: 5
+  _waveCount: 1
   _lowPowerupRate: 40
   _mediumPowerupRate: 25
   _highPowerupRate: 12

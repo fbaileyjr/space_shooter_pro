@@ -378,7 +378,7 @@ public class Boss1 : MonoBehaviour
 
             if (_bossHealth < 1)
             {
-                _spawnManager.stopSpawning();
+                _spawnManager.OnPlayerDeath();
                 _bossAnimator.SetTrigger("OnBossDeath");
                 _bossMovementSpeed = 0f;
                 foreach (Transform child in transform)

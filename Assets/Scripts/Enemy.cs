@@ -157,15 +157,6 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
-        _newPos = transform.position;
-        _enemyVelocity = (_newPos - _prevPos) / Time.fixedDeltaTime;  // velocity = dist/time
-        _prevPos = _newPos;  // update position for next frame calculation
-
-
-        _enemyAnimator.SetFloat("EnemyIdle", _enemyVelocity.x);
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

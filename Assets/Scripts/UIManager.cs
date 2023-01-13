@@ -131,18 +131,31 @@ public class UIManager : MonoBehaviour
         {
             _player.canShoot(true);
             _spawnManager.spawnFirstBoss();
+            while (count < 3)
+            {
+                _waveUI.SetText("FINAL WAVE");
+                _waveUI.gameObject.SetActive(true);
+                _waveUI.enabled = true;
+                yield return new WaitForSeconds(1.5f);
+                _waveUI.gameObject.SetActive(false);
+                _waveUI.enabled = false;
+                yield return new WaitForSeconds(.5f);
+                count += 1;
+            }
         }
-
-        while (count < 3)
+        else
         {
-            _waveUI.SetText("WAVE " + _spawnManager.currentWaveCount());
-            _waveUI.gameObject.SetActive(true);
-            _waveUI.enabled = true;
-            yield return new WaitForSeconds(1.5f);
-            _waveUI.gameObject.SetActive(false);
-            _waveUI.enabled = false;
-            yield return new WaitForSeconds(.5f);
-            count += 1;
+            while (count < 3)
+            {
+                _waveUI.SetText("WAVE " + _spawnManager.currentWaveCount());
+                _waveUI.gameObject.SetActive(true);
+                _waveUI.enabled = true;
+                yield return new WaitForSeconds(1.5f);
+                _waveUI.gameObject.SetActive(false);
+                _waveUI.enabled = false;
+                yield return new WaitForSeconds(.5f);
+                count += 1;
+            }
         }
 
         // if wave count = targetbosscount
