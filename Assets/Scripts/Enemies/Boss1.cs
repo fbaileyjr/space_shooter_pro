@@ -79,6 +79,7 @@ public class Boss1 : MonoBehaviour
     private AudioSource _explosionAudioSource;
 
     private SpawnManager _spawnManager;
+    private UIManager _uiManager;
 
     Vector2 _prevPos;
     Vector2 _newPos;
@@ -98,10 +99,11 @@ public class Boss1 : MonoBehaviour
         _bossHealthThreshold = _bossHealth * _bossThresholdMultiplier;
 
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
 
         if (_spawnManager == null)
         {
-            Debug.Log("_spawnManger not found on UIManager");
+            Debug.Log("_spawnManger not found on Boss1");
         }
 
         if (_EBPrefab == null)
@@ -379,6 +381,7 @@ public class Boss1 : MonoBehaviour
             if (_bossHealth < 1)
             {
                 _spawnManager.OnPlayerDeath();
+                _uiManager.UpdateScore(100);
                 _bossAnimator.SetTrigger("OnBossDeath");
                 _bossMovementSpeed = 0f;
                 foreach (Transform child in transform)
