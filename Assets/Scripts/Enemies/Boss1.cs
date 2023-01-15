@@ -78,6 +78,10 @@ public class Boss1 : MonoBehaviour
     [SerializeField]
     private AudioSource _explosionAudioSource;
 
+    [SerializeField]
+    private AudioClip _phaseHit;
+    AudioSource _audioSource;
+
     private SpawnManager _spawnManager;
     private UIManager _uiManager;
 
@@ -100,6 +104,8 @@ public class Boss1 : MonoBehaviour
 
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _audioSource = transform.GetComponent<AudioSource>();
+
 
         if (_spawnManager == null)
         {
@@ -138,7 +144,17 @@ public class Boss1 : MonoBehaviour
 
         if (_player == null)
         {
-            Debug.LogError("_player on Enemy is null");
+            Debug.LogError("_player on Boss1 is null");
+        }
+
+        if (_phaseHit == null)
+        {
+            Debug.LogError("_phaseHit on Boss1 is null");
+        }
+
+        if (_audioSource == null)
+        {
+            Debug.LogError("_audioSource on Boss1 is null");
         }
 
     }
@@ -368,6 +384,8 @@ public class Boss1 : MonoBehaviour
         if (other.tag == "Laser")
         {
             Destroy(other.gameObject);
+            Debug.Log("Playing phasehit");
+            _audioSource.PlayOneShot(_phaseHit, 1.0F);
 
             Debug.Log("Hit by laser!");
             _bossHealth -= 1;
