@@ -115,6 +115,8 @@ public class HomingMissle : MonoBehaviour
     {
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("Enemy");
+        if(gos.Length == 0)
+            gos = GameObject.FindGameObjectsWithTag("Boss");
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;

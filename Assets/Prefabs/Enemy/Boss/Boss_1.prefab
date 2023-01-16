@@ -629,6 +629,7 @@ MonoBehaviour:
   _bossHealth: 10
   _bossThresholdMultiplier: 0.4
   _explosionAudioSource: {fileID: 0}
+  _phaseHit: {fileID: 8300000, guid: 98804032d7c2c164c94e763a09f013a3, type: 3}
 --- !u!95 &-6850394518210804542
 Animator:
   serializedVersion: 4

@@ -77,6 +77,16 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject _firstPortal;
 
+    // infinite backgrounds
+    [SerializeField]
+    private GameObject _backgroundOne;
+    [SerializeField]
+    private GameObject _backgroundTwo;
+    [SerializeField]
+    private GameObject _foregroundOne;
+    [SerializeField]
+    private GameObject _foregroundTwo;
+
 
     void Start()
     {

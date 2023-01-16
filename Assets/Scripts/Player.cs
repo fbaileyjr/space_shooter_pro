@@ -236,27 +236,6 @@ void calculateMovement()
             transform.position = new Vector3(11, transform.position.y, 0);
         }
 
-        // for animation
-
-
-        //if (horiztonalInput > 0)
-        //{
-        //    _playerAnimator.SetBool("playerRight", true);
-        //    _playerAnimator.SetBool("playerLeft", false);
-        //    _playerAnimator.SetBool("playerIdle", false);
-        //}
-        //else if (horiztonalInput < 0)
-        //{
-        //    _playerAnimator.SetBool("playerRight", false);
-        //    _playerAnimator.SetBool("playerLeft", true);
-        //    _playerAnimator.SetBool("playerIdle", false);
-        //}
-        //else
-        //{
-        //    _playerAnimator.SetBool("playerRight", false);
-        //    _playerAnimator.SetBool("playerLeft", false);
-        //    _playerAnimator.SetBool("playerIdle", true);
-        //}
     }
 
     void FireLaser()
