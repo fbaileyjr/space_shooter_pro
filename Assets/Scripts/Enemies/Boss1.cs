@@ -400,6 +400,7 @@ public class Boss1 : MonoBehaviour
             {
                 _spawnManager.OnPlayerDeath();
                 _uiManager.UpdateScore(100);
+                _uiManager.finalGameOver();
                 _bossAnimator.SetTrigger("OnBossDeath");
                 _bossMovementSpeed = 0f;
                 foreach (Transform child in transform)

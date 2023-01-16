@@ -23,6 +23,12 @@ public class UIManager : MonoBehaviour
     private Text _gameOverText;
 
     [SerializeField]
+    private Text _finalGameOverText;
+
+    [SerializeField]
+    private Text _yourScore;
+
+    [SerializeField]
     private Text _restartText;
 
     [SerializeField]
@@ -39,6 +45,8 @@ public class UIManager : MonoBehaviour
 
     private int _currentEnemyDestroyed = 0;
     private int _targetWaveCount = 10;
+
+    private bool _lastWave = false;
 
     [SerializeField]
     private int _targetFirstBossWaveCount = 5;
@@ -71,7 +79,7 @@ public class UIManager : MonoBehaviour
         {
             _spawnManager.startNextWave();
             _currentEnemyDestroyed = 0;
-            _targetWaveCount += 5;
+            //_targetWaveCount += 5;
             StartCoroutine(waveCount());
         }
     }
@@ -101,6 +109,7 @@ public class UIManager : MonoBehaviour
         {
             GameOverSequence();
         }
+
     }
 
     void GameOverSequence()
@@ -111,6 +120,17 @@ public class UIManager : MonoBehaviour
         _spawnManager.updateWaveCount(1);
         StartCoroutine(TextFlicker());
     }
+
+    void FinalGameOverSequence()
+    {
+        _gameManager.GameOver();
+        _yourScore.text = "Your final score was: " + int.Parse(_scoreText.text);
+        _finalGameOverText.gameObject.SetActive(true);
+        _yourScore.gameObject.SetActive(true);
+        _restartText.gameObject.SetActive(true);
+        _spawnManager.updateWaveCount(1);
+    }
+
     IEnumerator TextFlicker()
     {
         while (true)
@@ -186,4 +206,10 @@ public class UIManager : MonoBehaviour
     {
         return _targetWaveCount;
     }
+
+    public void finalGameOver()
+    {
+        FinalGameOverSequence();
+    }
+
 }
