@@ -29,8 +29,10 @@ public class HomingMissle : MonoBehaviour
             Debug.Log("There are no enemies for homing missle.");
         }
 
-
-        _target = closestEnemy.GetComponent<Transform>();
+        if (closestEnemy != null)
+        {
+            _target = closestEnemy.GetComponent<Transform>();
+        }
         if (_target == null)
         {
             Debug.Log("_target transform is null");
@@ -77,7 +79,15 @@ public class HomingMissle : MonoBehaviour
         }
         else
         {
-            _destroyProjectile();
+            transform.Translate(Vector3.up * _movementSpeed * Time.deltaTime);
+            if (transform.position.y > 10.0f)
+            {
+                if (transform.parent != null)
+                {
+                    Destroy(transform.parent.gameObject);
+                }
+                _destroyProjectile();
+            }
         }
 
 
@@ -130,6 +140,13 @@ public class HomingMissle : MonoBehaviour
                 distance = curDistance;
             }
         }
-        return closest;
+        if (closest)
+        {
+            return closest;
+        }
+        else
+        {
+            return null;
+        }
     }
 }
