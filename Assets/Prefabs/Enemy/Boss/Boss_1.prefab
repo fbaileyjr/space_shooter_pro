@@ -626,7 +626,7 @@ MonoBehaviour:
   _texturedMegaLaserPrefab: {fileID: 2854373266127418142, guid: 5bd67ebe402b4104fa86b7839620a11e, type: 3}
   _textureLaserOffset: -6.8
   _bossMovementSpeed: 3
-  _bossHealth: 10
+  _bossHealth: 15
   _bossThresholdMultiplier: 0.4
   _explosionAudioSource: {fileID: 0}
   _phaseHit: {fileID: 8300000, guid: 98804032d7c2c164c94e763a09f013a3, type: 3}
